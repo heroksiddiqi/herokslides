@@ -17,7 +17,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDraggable, useDroppable, rectIntersection } from '@dnd-kit/core';
-import { Trash2, GripVertical, Download, Plus } from 'lucide-react';
+import { Trash2, GripVertical, Download, Plus, Eye, EyeOff, Clock } from 'lucide-react';
 
 // Draggable item for the Library (Right side)
 function LibraryItem({ slide, onAdd, usedCount }) {
@@ -91,7 +91,7 @@ function LibraryItem({ slide, onAdd, usedCount }) {
 }
 
 // Sortable item for the Slides List (Left side)
-function SortableSlide({ id, slide, onRemove, zoomLevel }) {
+function SortableSlide({ id, slide, onRemove, onUpdate, zoomLevel }) {
   const {
     attributes,
     listeners,
@@ -104,7 +104,9 @@ function SortableSlide({ id, slide, onRemove, zoomLevel }) {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1,
+    opacity: isDragging ? 0.5 : (slide.hidden ? 0.4 : 1),
+    background: slide.hidden ? '#1e293b' : undefined,
+    border: slide.hidden ? '1px dashed #475569' : undefined
   };
 
   const thumbStyle = {
@@ -124,13 +126,36 @@ function SortableSlide({ id, slide, onRemove, zoomLevel }) {
       ) : (
         <img src={slide.path} style={thumbStyle} className="slide-item-thumb" alt="" />
       )}
-      <div className="slide-item-info" style={{ fontSize: `${0.8 * zoomLevel}rem` }}>{slide.name}</div>
-      <button
-        onClick={() => onRemove(id)}
-        style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer' }}
-      >
-        <Trash2 size={16} />
-      </button>
+      <div className="slide-item-info" style={{ fontSize: `${0.8 * zoomLevel}rem`, flex: 1, display: 'flex', flexDirection: 'column', gap: '2px' }}>
+        <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '120px' }}>{slide.name}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <Clock size={10} color="#94a3b8" />
+          <input 
+            type="number" 
+            value={slide.duration || ''} 
+            placeholder="Auto"
+            onChange={(e) => onUpdate(id, { duration: parseInt(e.target.value) || null })}
+            style={{ width: '40px', fontSize: '10px', background: '#334155', border: '1px solid #475569', color: 'white', padding: '0 2px', borderRadius: '2px' }}
+          />
+          <span style={{ fontSize: '9px', color: '#94a3b8' }}>sec</span>
+        </div>
+      </div>
+      
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        <button 
+          onClick={() => onUpdate(id, { hidden: !slide.hidden })}
+          style={{ background: 'none', border: 'none', color: slide.hidden ? '#94a3b8' : '#3b82f6', cursor: 'pointer' }}
+          title={slide.hidden ? 'Show Slide' : 'Hide Slide'}
+        >
+          {slide.hidden ? <EyeOff size={16} /> : <Eye size={16} />}
+        </button>
+        <button 
+          onClick={() => onRemove(id)}
+          style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer' }}
+        >
+          <Trash2 size={16} />
+        </button>
+      </div>
     </div>
   );
 }
@@ -243,6 +268,11 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder }) {
     onUpdateOrder(currentSlides.filter(s => s.tempId !== tempId));
   };
 
+  const updateSlide = (tempId, updates) => {
+    const newSlides = currentSlides.map(s => s.tempId === tempId ? { ...s, ...updates } : s);
+    onUpdateOrder(newSlides);
+  };
+
   const downloadJson = () => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentSlides.map(({ tempId, ...rest }) => rest), null, 2));
     const downloadAnchorNode = document.createElement('a');
@@ -316,11 +346,12 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder }) {
               strategy={verticalListSortingStrategy}
             >
               {currentSlides.map((slide) => (
-                <SortableSlide
-                  key={slide.tempId}
-                  id={slide.tempId}
-                  slide={slide}
+                <SortableSlide 
+                  key={slide.tempId} 
+                  id={slide.tempId} 
+                  slide={slide} 
                   onRemove={removeSlide}
+                  onUpdate={updateSlide}
                   zoomLevel={zoomLevel}
                 />
               ))}

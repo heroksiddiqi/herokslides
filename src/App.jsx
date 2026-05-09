@@ -131,26 +131,68 @@ function App() {
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => {
-      if (settings.isRandom) {
-        return Math.floor(Math.random() * slides.length);
+      let nextIdx = prev;
+      const totalSlides = slides.length;
+      
+      if (totalSlides === 0) return 0;
+
+      // Find the next non-hidden slide
+      for (let i = 1; i <= totalSlides; i++) {
+        const potentialIdx = settings.isRandom 
+          ? Math.floor(Math.random() * totalSlides)
+          : (prev + i) % totalSlides;
+          
+        if (!slides[potentialIdx]?.hidden) {
+          nextIdx = potentialIdx;
+          break;
+        }
       }
-      return (prev + 1) % slides.length;
+      return nextIdx;
     });
-  }, [slides.length, settings.isRandom]);
+  }, [slides, settings.isRandom]);
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrentIndex((prev) => {
+      const totalSlides = slides.length;
+      if (totalSlides === 0) return 0;
+      
+      let prevIdx = prev;
+      for (let i = 1; i <= totalSlides; i++) {
+        const potentialIdx = (prev - i + totalSlides) % totalSlides;
+        if (!slides[potentialIdx]?.hidden) {
+          prevIdx = potentialIdx;
+          break;
+        }
+      }
+      return prevIdx;
+    });
   };
 
   // Slideshow timer
   useEffect(() => {
     if (isPlaying && slides.length > 0) {
-      const isJob = slides[currentIndex]?.type === 'dynamic-job';
-      const currentDuration = isJob ? settings.dynamicDuration : settings.duration;
+      const currentSlide = slides[currentIndex];
+      
+      // 1. Individual slide duration override
+      // 2. Default to dynamic or static global duration
+      let currentDuration = currentSlide?.duration;
+      
+      if (!currentDuration) {
+        const isJob = currentSlide?.type === 'dynamic-job';
+        currentDuration = isJob ? settings.dynamicDuration : settings.duration;
+      }
+
       timerRef.current = setInterval(nextSlide, currentDuration * 1000);
     }
     return () => clearInterval(timerRef.current);
   }, [isPlaying, nextSlide, settings.duration, settings.dynamicDuration, slides, currentIndex]);
+
+  // Handle skip if current slide is hidden
+  useEffect(() => {
+    if (slides.length > 0 && slides[currentIndex]?.hidden) {
+      nextSlide();
+    }
+  }, [currentIndex, slides, nextSlide]);
 
   // Preloading logic
   useEffect(() => {
@@ -310,12 +352,15 @@ function App() {
 
       {/* Progress Bar */}
       {isPlaying && (
-        <motion.div
+        <motion.div 
           className="progress-bar"
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           key={`progress-${currentIndex}`}
-          transition={{ duration: settings.duration, ease: "linear" }}
+          transition={{ 
+            duration: slides[currentIndex]?.duration || (slides[currentIndex]?.type === 'dynamic-job' ? settings.dynamicDuration : settings.duration), 
+            ease: "linear" 
+          }}
         />
       )}
 
