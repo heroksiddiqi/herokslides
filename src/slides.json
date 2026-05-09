@@ -1,0 +1,818 @@
+[
+  {
+    "id": 1,
+    "path": "/slides/001-photo-print/1.webp",
+    "category": "001-photo-print",
+    "name": "1.webp"
+  },
+  {
+    "id": 7,
+    "path": "/slides/002-passport/1.webp",
+    "category": "002-passport",
+    "name": "1.webp"
+  },
+  {
+    "id": 15,
+    "path": "/slides/003-job-application/1.webp",
+    "category": "003-job-application",
+    "name": "1.webp"
+  },
+  {
+    "id": 23,
+    "path": "/slides/004-online-gd/2.webp",
+    "category": "004-online-gd",
+    "name": "2.webp"
+  },
+  {
+    "id": 30,
+    "path": "/slides/005-cv/4.webp",
+    "category": "005-cv",
+    "name": "4.webp"
+  },
+  {
+    "id": 39,
+    "path": "/slides/006-nid/4.webp",
+    "category": "006-nid",
+    "name": "4.webp"
+  },
+  {
+    "id": 42,
+    "path": "/slides/007-facebook/1.webp",
+    "category": "007-facebook",
+    "name": "1.webp"
+  },
+  {
+    "id": 45,
+    "path": "/slides/008-business-software/1.webp",
+    "category": "008-business-software",
+    "name": "1.webp"
+  },
+  {
+    "id": 48,
+    "path": "/slides/008-business-software/4.webp",
+    "category": "008-business-software",
+    "name": "4.webp"
+  },
+  {
+    "id": 53,
+    "path": "/slides/009-deed/1.webp",
+    "category": "009-deed",
+    "name": "1.webp"
+  },
+  {
+    "id": 58,
+    "path": "/slides/010-education-software/1.webp",
+    "category": "010-education-software",
+    "name": "1.webp"
+  },
+  {
+    "id": 70,
+    "path": "/slides/011-question-typing/1.webp",
+    "category": "011-question-typing",
+    "name": "1.webp"
+  },
+  {
+    "id": 82,
+    "path": "/slides/012-land/11.webp",
+    "category": "012-land",
+    "name": "11.webp"
+  },
+  {
+    "id": 93,
+    "path": "/slides/013-police-clearance/11.webp",
+    "category": "013-police-clearance",
+    "name": "11.webp"
+  },
+  {
+    "id": 104,
+    "path": "/slides/014-tin/2.webp",
+    "category": "014-tin",
+    "name": "2.webp"
+  },
+  {
+    "id": 108,
+    "path": "/slides/015-zero-return/1.webp",
+    "category": "015-zero-return",
+    "name": "1.webp"
+  },
+  {
+    "id": 113,
+    "path": "/slides/016-training/1.webp",
+    "category": "016-training",
+    "name": "1.webp"
+  },
+  {
+    "id": 115,
+    "path": "/slides/017-rail/1.webp",
+    "category": "017-rail",
+    "name": "1.webp"
+  },
+  {
+    "id": 122,
+    "path": "/slides/018-nid-correction/3.webp",
+    "category": "018-nid-correction",
+    "name": "3.webp"
+  },
+  {
+    "id": 129,
+    "path": "/slides/019-driving-licence/4.webp",
+    "category": "019-driving-licence",
+    "name": "4.webp"
+  },
+  {
+    "id": 134,
+    "path": "/slides/020-admission/1.webp",
+    "category": "020-admission",
+    "name": "1.webp"
+  },
+  {
+    "id": 137,
+    "path": "/slides/021-misc/2.webp",
+    "category": "021-misc",
+    "name": "2.webp"
+  },
+  {
+    "id": 2,
+    "path": "/slides/001-photo-print/2.webp",
+    "category": "001-photo-print",
+    "name": "2.webp"
+  },
+  {
+    "id": 8,
+    "path": "/slides/002-passport/2.webp",
+    "category": "002-passport",
+    "name": "2.webp"
+  },
+  {
+    "id": 16,
+    "path": "/slides/003-job-application/2.webp",
+    "category": "003-job-application",
+    "name": "2.webp"
+  },
+  {
+    "id": 22,
+    "path": "/slides/004-online-gd/1.webp",
+    "category": "004-online-gd",
+    "name": "1.webp"
+  },
+  {
+    "id": 29,
+    "path": "/slides/005-cv/3.webp",
+    "category": "005-cv",
+    "name": "3.webp"
+  },
+  {
+    "id": 36,
+    "path": "/slides/006-nid/1.webp",
+    "category": "006-nid",
+    "name": "1.webp"
+  },
+  {
+    "id": 43,
+    "path": "/slides/007-facebook/2.webp",
+    "category": "007-facebook",
+    "name": "2.webp"
+  },
+  {
+    "id": 46,
+    "path": "/slides/008-business-software/2.webp",
+    "category": "008-business-software",
+    "name": "2.webp"
+  },
+  {
+    "id": 55,
+    "path": "/slides/009-deed/3.webp",
+    "category": "009-deed",
+    "name": "3.webp"
+  },
+  {
+    "id": 66,
+    "path": "/slides/010-education-software/6.webp",
+    "category": "010-education-software",
+    "name": "6.webp"
+  },
+  {
+    "id": 62,
+    "path": "/slides/010-education-software/2.webp",
+    "category": "010-education-software",
+    "name": "2.webp"
+  },
+  {
+    "id": 73,
+    "path": "/slides/011-question-typing/3.webp",
+    "category": "011-question-typing",
+    "name": "3.webp"
+  },
+  {
+    "id": 81,
+    "path": "/slides/012-land/10.webp",
+    "category": "012-land",
+    "name": "10.webp"
+  },
+  {
+    "id": 80,
+    "path": "/slides/012-land/1.webp",
+    "category": "012-land",
+    "name": "1.webp"
+  },
+  {
+    "id": 91,
+    "path": "/slides/013-police-clearance/1.webp",
+    "category": "013-police-clearance",
+    "name": "1.webp"
+  },
+  {
+    "id": 101,
+    "path": "/slides/013-police-clearance/8.webp",
+    "category": "013-police-clearance",
+    "name": "8.webp"
+  },
+  {
+    "id": 106,
+    "path": "/slides/014-tin/4.webp",
+    "category": "014-tin",
+    "name": "4.webp"
+  },
+  {
+    "id": 112,
+    "path": "/slides/015-zero-return/5.webp",
+    "category": "015-zero-return",
+    "name": "5.webp"
+  },
+  {
+    "id": 116,
+    "path": "/slides/017-rail/2.webp",
+    "category": "017-rail",
+    "name": "2.webp"
+  },
+  {
+    "id": 120,
+    "path": "/slides/018-nid-correction/1.webp",
+    "category": "018-nid-correction",
+    "name": "1.webp"
+  },
+  {
+    "id": 132,
+    "path": "/slides/019-driving-licence/7.webp",
+    "category": "019-driving-licence",
+    "name": "7.webp"
+  },
+  {
+    "id": 136,
+    "path": "/slides/021-misc/1.webp",
+    "category": "021-misc",
+    "name": "1.webp"
+  },
+  {
+    "id": 5,
+    "path": "/slides/001-photo-print/5.webp",
+    "category": "001-photo-print",
+    "name": "5.webp"
+  },
+  {
+    "id": 10,
+    "path": "/slides/002-passport/4.webp",
+    "category": "002-passport",
+    "name": "4.webp"
+  },
+  {
+    "id": 17,
+    "path": "/slides/003-job-application/3.webp",
+    "category": "003-job-application",
+    "name": "3.webp"
+  },
+  {
+    "id": 24,
+    "path": "/slides/004-online-gd/3.webp",
+    "category": "004-online-gd",
+    "name": "3.webp"
+  },
+  {
+    "id": 28,
+    "path": "/slides/005-cv/2.webp",
+    "category": "005-cv",
+    "name": "2.webp"
+  },
+  {
+    "id": 40,
+    "path": "/slides/006-nid/5.webp",
+    "category": "006-nid",
+    "name": "5.webp"
+  },
+  {
+    "id": 44,
+    "path": "/slides/007-facebook/3.webp",
+    "category": "007-facebook",
+    "name": "3.webp"
+  },
+  {
+    "id": 50,
+    "path": "/slides/008-business-software/6.webp",
+    "category": "008-business-software",
+    "name": "6.webp"
+  },
+  {
+    "id": 49,
+    "path": "/slides/008-business-software/5.webp",
+    "category": "008-business-software",
+    "name": "5.webp"
+  },
+  {
+    "id": 54,
+    "path": "/slides/009-deed/2.webp",
+    "category": "009-deed",
+    "name": "2.webp"
+  },
+  {
+    "id": 59,
+    "path": "/slides/010-education-software/10.webp",
+    "category": "010-education-software",
+    "name": "10.webp"
+  },
+  {
+    "id": 64,
+    "path": "/slides/010-education-software/4.webp",
+    "category": "010-education-software",
+    "name": "4.webp"
+  },
+  {
+    "id": 71,
+    "path": "/slides/011-question-typing/10.webp",
+    "category": "011-question-typing",
+    "name": "10.webp"
+  },
+  {
+    "id": 86,
+    "path": "/slides/012-land/5.webp",
+    "category": "012-land",
+    "name": "5.webp"
+  },
+  {
+    "id": 96,
+    "path": "/slides/013-police-clearance/3.webp",
+    "category": "013-police-clearance",
+    "name": "3.webp"
+  },
+  {
+    "id": 103,
+    "path": "/slides/014-tin/1.webp",
+    "category": "014-tin",
+    "name": "1.webp"
+  },
+  {
+    "id": 109,
+    "path": "/slides/015-zero-return/2.webp",
+    "category": "015-zero-return",
+    "name": "2.webp"
+  },
+  {
+    "id": 117,
+    "path": "/slides/017-rail/3.webp",
+    "category": "017-rail",
+    "name": "3.webp"
+  },
+  {
+    "id": 121,
+    "path": "/slides/018-nid-correction/2.webp",
+    "category": "018-nid-correction",
+    "name": "2.webp"
+  },
+  {
+    "id": 128,
+    "path": "/slides/019-driving-licence/3.webp",
+    "category": "019-driving-licence",
+    "name": "3.webp"
+  },
+  {
+    "id": 131,
+    "path": "/slides/019-driving-licence/6.webp",
+    "category": "019-driving-licence",
+    "name": "6.webp"
+  },
+  {
+    "id": 135,
+    "path": "/slides/020-admission/2.webp",
+    "category": "020-admission",
+    "name": "2.webp"
+  },
+  {
+    "id": 140,
+    "path": "/slides/021-misc/8.webp",
+    "category": "021-misc",
+    "name": "8.webp"
+  },
+  {
+    "id": 4,
+    "path": "/slides/001-photo-print/4.webp",
+    "category": "001-photo-print",
+    "name": "4.webp"
+  },
+  {
+    "id": 3,
+    "path": "/slides/001-photo-print/3.webp",
+    "category": "001-photo-print",
+    "name": "3.webp"
+  },
+  {
+    "id": 9,
+    "path": "/slides/002-passport/3.webp",
+    "category": "002-passport",
+    "name": "3.webp"
+  },
+  {
+    "id": 11,
+    "path": "/slides/002-passport/5.webp",
+    "category": "002-passport",
+    "name": "5.webp"
+  },
+  {
+    "id": 18,
+    "path": "/slides/003-job-application/4.webp",
+    "category": "003-job-application",
+    "name": "4.webp"
+  },
+  {
+    "id": 21,
+    "path": "/slides/003-job-application/7.webp",
+    "category": "003-job-application",
+    "name": "7.webp"
+  },
+  {
+    "id": 25,
+    "path": "/slides/004-online-gd/4.webp",
+    "category": "004-online-gd",
+    "name": "4.webp"
+  },
+  {
+    "id": 27,
+    "path": "/slides/005-cv/1.webp",
+    "category": "005-cv",
+    "name": "1.webp"
+  },
+  {
+    "id": 35,
+    "path": "/slides/005-cv/9.webp",
+    "category": "005-cv",
+    "name": "9.webp"
+  },
+  {
+    "id": 37,
+    "path": "/slides/006-nid/2.webp",
+    "category": "006-nid",
+    "name": "2.webp"
+  },
+  {
+    "id": 52,
+    "path": "/slides/008-business-software/8.webp",
+    "category": "008-business-software",
+    "name": "8.webp"
+  },
+  {
+    "id": 57,
+    "path": "/slides/009-deed/5.webp",
+    "category": "009-deed",
+    "name": "5.webp"
+  },
+  {
+    "id": 65,
+    "path": "/slides/010-education-software/5.webp",
+    "category": "010-education-software",
+    "name": "5.webp"
+  },
+  {
+    "id": 79,
+    "path": "/slides/011-question-typing/9.webp",
+    "category": "011-question-typing",
+    "name": "9.webp"
+  },
+  {
+    "id": 72,
+    "path": "/slides/011-question-typing/2.webp",
+    "category": "011-question-typing",
+    "name": "2.webp"
+  },
+  {
+    "id": 87,
+    "path": "/slides/012-land/6.webp",
+    "category": "012-land",
+    "name": "6.webp"
+  },
+  {
+    "id": 89,
+    "path": "/slides/012-land/8.webp",
+    "category": "012-land",
+    "name": "8.webp"
+  },
+  {
+    "id": 26,
+    "path": "/slides/004-online-gd/5.webp",
+    "category": "004-online-gd",
+    "name": "5.webp"
+  },
+  {
+    "id": 32,
+    "path": "/slides/005-cv/6.webp",
+    "category": "005-cv",
+    "name": "6.webp"
+  },
+  {
+    "id": 34,
+    "path": "/slides/005-cv/8.webp",
+    "category": "005-cv",
+    "name": "8.webp"
+  },
+  {
+    "id": 42,
+    "path": "/slides/007-facebook/1.webp",
+    "category": "007-facebook",
+    "name": "1.webp"
+  },
+  {
+    "id": 47,
+    "path": "/slides/008-business-software/3.webp",
+    "category": "008-business-software",
+    "name": "3.webp"
+  },
+  {
+    "id": 56,
+    "path": "/slides/009-deed/4.webp",
+    "category": "009-deed",
+    "name": "4.webp"
+  },
+  {
+    "id": 60,
+    "path": "/slides/010-education-software/11.webp",
+    "category": "010-education-software",
+    "name": "11.webp"
+  },
+  {
+    "id": 114,
+    "path": "/slides/016-training/2.webp",
+    "category": "016-training",
+    "name": "2.webp"
+  },
+  {
+    "id": 110,
+    "path": "/slides/015-zero-return/3.webp",
+    "category": "015-zero-return",
+    "name": "3.webp"
+  },
+  {
+    "id": 78,
+    "path": "/slides/011-question-typing/8.webp",
+    "category": "011-question-typing",
+    "name": "8.webp"
+  },
+  {
+    "id": 83,
+    "path": "/slides/012-land/2.webp",
+    "category": "012-land",
+    "name": "2.webp"
+  },
+  {
+    "id": 127,
+    "path": "/slides/019-driving-licence/2.webp",
+    "category": "019-driving-licence",
+    "name": "2.webp"
+  },
+  {
+    "id": 119,
+    "path": "/slides/017-rail/5.webp",
+    "category": "017-rail",
+    "name": "5.webp"
+  },
+  {
+    "id": 105,
+    "path": "/slides/014-tin/3.webp",
+    "category": "014-tin",
+    "name": "3.webp"
+  },
+  {
+    "id": 100,
+    "path": "/slides/013-police-clearance/7.webp",
+    "category": "013-police-clearance",
+    "name": "7.webp"
+  },
+  {
+    "id": 25,
+    "path": "/slides/004-online-gd/4.webp",
+    "category": "004-online-gd",
+    "name": "4.webp"
+  },
+  {
+    "id": 51,
+    "path": "/slides/008-business-software/7.webp",
+    "category": "008-business-software",
+    "name": "7.webp"
+  },
+  {
+    "id": 90,
+    "path": "/slides/012-land/9.webp",
+    "category": "012-land",
+    "name": "9.webp"
+  },
+  {
+    "id": 138,
+    "path": "/slides/021-misc/5.webp",
+    "category": "021-misc",
+    "name": "5.webp"
+  },
+  {
+    "id": 124,
+    "path": "/slides/018-nid-correction/5.webp",
+    "category": "018-nid-correction",
+    "name": "5.webp"
+  },
+  {
+    "id": 31,
+    "path": "/slides/005-cv/5.webp",
+    "category": "005-cv",
+    "name": "5.webp"
+  },
+  {
+    "id": 19,
+    "path": "/slides/003-job-application/5.webp",
+    "category": "003-job-application",
+    "name": "5.webp"
+  },
+  {
+    "id": 14,
+    "path": "/slides/002-passport/8.webp",
+    "category": "002-passport",
+    "name": "8.webp"
+  },
+  {
+    "id": 45,
+    "path": "/slides/008-business-software/1.webp",
+    "category": "008-business-software",
+    "name": "1.webp"
+  },
+  {
+    "id": 61,
+    "path": "/slides/010-education-software/12.webp",
+    "category": "010-education-software",
+    "name": "12.webp"
+  },
+  {
+    "id": 63,
+    "path": "/slides/010-education-software/3.webp",
+    "category": "010-education-software",
+    "name": "3.webp"
+  },
+  {
+    "id": 74,
+    "path": "/slides/011-question-typing/4.webp",
+    "category": "011-question-typing",
+    "name": "4.webp"
+  },
+  {
+    "id": 76,
+    "path": "/slides/011-question-typing/6.webp",
+    "category": "011-question-typing",
+    "name": "6.webp"
+  },
+  {
+    "id": 68,
+    "path": "/slides/010-education-software/8.webp",
+    "category": "010-education-software",
+    "name": "8.webp"
+  },
+  {
+    "id": 88,
+    "path": "/slides/012-land/7.webp",
+    "category": "012-land",
+    "name": "7.webp"
+  },
+  {
+    "id": 118,
+    "path": "/slides/017-rail/4.webp",
+    "category": "017-rail",
+    "name": "4.webp"
+  },
+  {
+    "id": 38,
+    "path": "/slides/006-nid/3.webp",
+    "category": "006-nid",
+    "name": "3.webp"
+  },
+  {
+    "id": 12,
+    "path": "/slides/002-passport/6.webp",
+    "category": "002-passport",
+    "name": "6.webp"
+  },
+  {
+    "id": 6,
+    "path": "/slides/001-photo-print/chrome_pDS8na9km1.webp",
+    "category": "001-photo-print",
+    "name": "chrome_pDS8na9km1.webp"
+  },
+  {
+    "id": 133,
+    "path": "/slides/019-driving-licence/8.webp",
+    "category": "019-driving-licence",
+    "name": "8.webp"
+  },
+  {
+    "id": 126,
+    "path": "/slides/019-driving-licence/1.webp",
+    "category": "019-driving-licence",
+    "name": "1.webp"
+  },
+  {
+    "id": 123,
+    "path": "/slides/018-nid-correction/4.webp",
+    "category": "018-nid-correction",
+    "name": "4.webp"
+  },
+  {
+    "id": 69,
+    "path": "/slides/010-education-software/9.webp",
+    "category": "010-education-software",
+    "name": "9.webp"
+  },
+  {
+    "id": 134,
+    "path": "/slides/020-admission/1.webp",
+    "category": "020-admission",
+    "name": "1.webp"
+  },
+  {
+    "id": 20,
+    "path": "/slides/003-job-application/6.webp",
+    "category": "003-job-application",
+    "name": "6.webp"
+  },
+  {
+    "id": 33,
+    "path": "/slides/005-cv/7.webp",
+    "category": "005-cv",
+    "name": "7.webp"
+  },
+  {
+    "id": 42,
+    "path": "/slides/007-facebook/1.webp",
+    "category": "007-facebook",
+    "name": "1.webp"
+  },
+  {
+    "id": 43,
+    "path": "/slides/007-facebook/2.webp",
+    "category": "007-facebook",
+    "name": "2.webp"
+  },
+  {
+    "id": 44,
+    "path": "/slides/007-facebook/3.webp",
+    "category": "007-facebook",
+    "name": "3.webp"
+  },
+  {
+    "id": 77,
+    "path": "/slides/011-question-typing/7.webp",
+    "category": "011-question-typing",
+    "name": "7.webp"
+  },
+  {
+    "id": 84,
+    "path": "/slides/012-land/3.webp",
+    "category": "012-land",
+    "name": "3.webp"
+  },
+  {
+    "id": 85,
+    "path": "/slides/012-land/4.webp",
+    "category": "012-land",
+    "name": "4.webp"
+  },
+  {
+    "id": 41,
+    "path": "/slides/006-nid/6.webp",
+    "category": "006-nid",
+    "name": "6.webp"
+  },
+  {
+    "id": 95,
+    "path": "/slides/013-police-clearance/2.webp",
+    "category": "013-police-clearance",
+    "name": "2.webp"
+  },
+  {
+    "id": 94,
+    "path": "/slides/013-police-clearance/12.webp",
+    "category": "013-police-clearance",
+    "name": "12.webp"
+  },
+  {
+    "id": 134,
+    "path": "/slides/020-admission/1.webp",
+    "category": "020-admission",
+    "name": "1.webp"
+  },
+  {
+    "id": 13,
+    "path": "/slides/002-passport/7.webp",
+    "category": "002-passport",
+    "name": "7.webp"
+  }
+]
