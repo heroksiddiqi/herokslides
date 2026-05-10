@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Briefcase } from 'lucide-react';
 
 const formatBengaliDate = (dateStr) => {
   if (!dateStr) return 'চলমান';
@@ -95,10 +94,10 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
 
   if (loading && activeJobs.length === 0) {
     return (
-      <div className="dynamic-job-container dark-theme flex items-center justify-center">
-        <div className="text-center">
-          <div className="custom-loader mb-4 mx-auto"></div>
-          <p className="text-indigo-400 animate-pulse">ডাটা লোড হচ্ছে...</p>
+      <div className="dynamic-job-container dark-theme">
+        <div className="loader-container">
+          <div className="spinner"></div>
+          <p className="loading-text">ডাটা লোড হচ্ছে...</p>
         </div>
       </div>
     );
@@ -129,32 +128,23 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="job-grid grid grid-cols-2 gap-6 p-8"
+          className="job-grid"
           initial={{ opacity: 0, filter: 'blur(10px)' }}
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, filter: 'blur(10px)' }}
           transition={{ duration: 0.8 }}
         >
           {displayJobs.map((job, index) => {
-            // Handle different data structures (WP vs Blogger)
             const jobTitle = job.isBlogger ? job.title : job.title.rendered;
             const jobDate = job.isBlogger ? job.deadline : (job.meta?._deadline_date || job.date);
 
             return (
-              <div
-                key={job.id}
-                className="glass-card relative rounded-3xl p-6 flex flex-col justify-between border border-white/10"
-                style={{ minHeight: '220px' }}
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-t-3xl"></div>
+              <div key={job.id} className="glass-card">
+                <h2 className="job-title-large" dangerouslySetInnerHTML={{ __html: jobTitle }}></h2>
 
-                <div className="mb-4">
-                  <h2 className="text-xl font-bold text-white leading-tight line-clamp-3" dangerouslySetInnerHTML={{ __html: jobTitle }}></h2>
-                </div>
-
-                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                  <p className="text-sm text-slate-400">
-                    {'ডেডলাইন:'} <span className="text-slate-200 font-semibold">{formatBengaliDate(jobDate)}</span>
+                <div className="card-footer">
+                  <p className="deadline-text">
+                    ডেডলাইন: <span className="deadline-highlight">{formatBengaliDate(jobDate)}</span>
                   </p>
                 </div>
               </div>
