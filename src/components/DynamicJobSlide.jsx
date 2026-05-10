@@ -32,7 +32,7 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
     const entries = data.feed.entry || [];
     const processedJobs = entries.map(entry => {
       const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
-      
+
       // Extract deadline if present in content (e.g., Deadline: 24 May 2026)
       const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
       const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
