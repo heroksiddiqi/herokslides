@@ -33,24 +33,9 @@ function App() {
       setSettings(JSON.parse(savedSettings));
     }
 
-    const savedOrder = localStorage.getItem('custom-slide-order');
-    if (savedOrder) {
-      let parsedOrder = JSON.parse(savedOrder);
-      // Migration: Update any old .png paths and names to .webp
-      parsedOrder = parsedOrder.map(slide => {
-        let updatedSlide = { ...slide };
-        if (updatedSlide.path && updatedSlide.path.endsWith('.png')) {
-          updatedSlide.path = updatedSlide.path.replace('.png', '.webp');
-        }
-        if (updatedSlide.name && updatedSlide.name.endsWith('.png')) {
-          updatedSlide.name = updatedSlide.name.replace('.png', '.webp');
-        }
-        return updatedSlide;
-      });
-      setSlides(parsedOrder);
-    } else {
-      setSlides(slideData.map(s => ({ ...s, tempId: `sortable-${s.id}-${Math.random()}` })));
-    }
+    // Force load the newly generated slides.json and clear old local storage order
+    localStorage.removeItem('custom-slide-order');
+    setSlides(slideData.map(s => ({ ...s, tempId: `sortable-${s.id}-${Math.random()}` })));
 
     fetchJobs();
 
