@@ -134,7 +134,8 @@ function App() {
         exams: examsData || [],
         deadline: d1Data || [],
         deadline3: mergedDeadline3 || [],
-        hot: [] 
+        hot: [],
+        latest: []
       });
     } catch (error) {
       console.error("Failed to fetch jobs", error);
@@ -332,6 +333,7 @@ function App() {
                       slides[currentIndex]?.subType === 'deadline' ? jobs.deadline :
                         slides[currentIndex]?.subType === 'deadline3' ? jobs.deadline3 :
                           slides[currentIndex]?.subType === 'hot' ? jobs.hot :
+                            slides[currentIndex]?.subType === 'latest' ? jobs.latest :
                             jobs.prebd
               }
               subType={slides[currentIndex]?.subType}
@@ -342,6 +344,7 @@ function App() {
                       slides[currentIndex]?.subType === 'deadline' ? 'আগামীকালের ডেডলাইন' :
                         slides[currentIndex]?.subType === 'deadline3' ? 'আগামী ৩ দিনের ডেডলাইন' :
                           slides[currentIndex]?.subType === 'hot' ? 'হট জবস' :
+                            slides[currentIndex]?.subType === 'latest' ? 'লেটেস্ট জব ইনফো' :
                             'বাছাইকৃত সার্কুলার'
               }
               internalInterval={settings.internalInterval}

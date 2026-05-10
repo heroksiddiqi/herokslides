@@ -43,7 +43,7 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
         deadline: deadline,
         isBlogger: true
       };
-    });
+    }).filter(job => job.title.trim() !== 'চাকরির খবর');
     setInternalJobs(processedJobs);
     setLoading(false);
   }, []);
@@ -65,6 +65,7 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
     let label = "Hot job";
     if (subType === 'govt') label = "Govt job";
     if (subType === 'faridpur') label = "Faridpur job";
+    if (subType === 'latest') label = "aaab";
 
     const script = document.createElement('script');
     script.src = `https://fearyourcreatorndonotwasteothersright.blogspot.com/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&callback=${callbackName}`;
