@@ -185,7 +185,8 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder }) {
     { id: 'dynamic-job-govt', name: 'সরকারী চাকরী', type: 'dynamic-job', category: 'Dynamic', subType: 'govt' },
     { id: 'dynamic-job-exams', name: 'পরীক্ষার সময়সূচী', type: 'dynamic-job', category: 'Dynamic', subType: 'exams' },
     { id: 'dynamic-job-deadline', name: 'আগামীকালের ডেডলাইন', type: 'dynamic-job', category: 'Dynamic', subType: 'deadline' },
-    { id: 'dynamic-job-deadline3', name: 'আগামী ৩ দিনের ডেডলাইন', type: 'dynamic-job', category: 'Dynamic', subType: 'deadline3' }
+    { id: 'dynamic-job-deadline3', name: 'আগামী ৩ দিনের ডেডলাইন', type: 'dynamic-job', category: 'Dynamic', subType: 'deadline3' },
+    { id: 'dynamic-job-hot', name: 'হট জবস', type: 'dynamic-job', category: 'Dynamic', subType: 'hot' }
   ];
 
   const libraryWithDynamic = useMemo(() => {

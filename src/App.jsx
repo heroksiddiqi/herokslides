@@ -13,7 +13,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
-  const [jobs, setJobs] = useState({ prebd: [], faridpur: [], govt: [], exams: [], deadline: [], deadline3: [] });
+  const [jobs, setJobs] = useState({ prebd: [], faridpur: [], govt: [], exams: [], deadline: [], deadline3: [], hot: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isOrganizerMode, setIsOrganizerMode] = useState(false);
@@ -67,15 +67,33 @@ function App() {
       });
     });
 
-    Promise.all(initialPreload).then(() => {
+    Promise.all(initialPreload).finally(() => {
       setIsLoading(false);
     });
 
-    return () => clearInterval(jobRefreshInterval);
+    // Fallback: Force loading to end after 5 seconds
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+
+    return () => {
+      clearInterval(jobRefreshInterval);
+      clearTimeout(loadingTimeout);
+    };
   }, []);
 
-  // Fetch jobs from Prebd API
+  // Fetch jobs from Prebd API and Blogspot
   const fetchJobs = async () => {
+    const safeFetch = async (url) => {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) return [];
+        return await res.json();
+      } catch (e) {
+        return [];
+      }
+    };
+
     try {
       // Helper function to get formatted date (YYYY-MM-DD)
       const getDeadlineDate = (daysAhead) => {
@@ -91,38 +109,32 @@ function App() {
       const date2 = getDeadlineDate(2);
       const date3 = getDeadlineDate(3);
 
-      const [prebdRes, faridpurRes, govtRes, examsRes, d1Res, d2Res, d3Res] = await Promise.all([
-        fetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=189'),
-        fetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=73'),
-        fetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=13'),
-        fetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=132'),
-        fetch(`https://prebd.com/wp-json/wp/v2/posts?per_page=15&_embed=true&categories=188&meta_key=_deadline_date&meta_value=${date1}&page=1`),
-        fetch(`https://prebd.com/wp-json/wp/v2/posts?per_page=15&_embed=true&categories=188&meta_key=_deadline_date&meta_value=${date2}&page=1`),
-        fetch(`https://prebd.com/wp-json/wp/v2/posts?per_page=15&_embed=true&categories=188&meta_key=_deadline_date&meta_value=${date3}&page=1`)
+      // Fetch all WP data in parallel safely
+      const [prebdData, faridpurData, govtData, examsData, d1Data, d2Data, d3Data] = await Promise.all([
+        safeFetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=189'),
+        safeFetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=73'),
+        safeFetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=13'),
+        safeFetch('https://prebd.com/wp-json/wp/v2/posts?per_page=20&_embed=true&page=1&categories=132'),
+        safeFetch(`https://prebd.com/wp-json/wp/v2/posts?per_page=15&_embed=true&categories=188&meta_key=_deadline_date&meta_value=${date1}&page=1`),
+        safeFetch(`https://prebd.com/wp-json/wp/v2/posts?per_page=15&_embed=true&categories=188&meta_key=_deadline_date&meta_value=${date2}&page=1`),
+        safeFetch(`https://prebd.com/wp-json/wp/v2/posts?per_page=15&_embed=true&categories=188&meta_key=_deadline_date&meta_value=${date3}&page=1`)
       ]);
 
-      const prebdData = await prebdRes.json();
-      const faridpurData = await faridpurRes.json();
-      const govtData = await govtRes.json();
-      const examsData = await examsRes.json();
-      const d1Data = await d1Res.json();
-      const d2Data = await d2Res.json();
-      const d3Data = await d3Res.json();
-
       // ৩ দিনের ডাটা মার্জ করা এবং ডুপ্লিকেট রিমুভ করা
-      const mergedDeadline3 = [...d1Data, ...d2Data, ...d3Data].reduce((acc, current) => {
+      const mergedDeadline3 = [...(d1Data || []), ...(d2Data || []), ...(d3Data || [])].reduce((acc, current) => {
         const x = acc.find(item => item.id === current.id);
         if (!x) return acc.concat([current]);
         else return acc;
       }, []);
 
       setJobs({
-        prebd: prebdData,
-        faridpur: faridpurData,
-        govt: govtData,
-        exams: examsData,
-        deadline: d1Data,
-        deadline3: mergedDeadline3
+        prebd: prebdData || [],
+        faridpur: faridpurData || [],
+        govt: govtData || [],
+        exams: examsData || [],
+        deadline: d1Data || [],
+        deadline3: mergedDeadline3 || [],
+        hot: [] 
       });
     } catch (error) {
       console.error("Failed to fetch jobs", error);
@@ -319,19 +331,20 @@ function App() {
                     slides[currentIndex]?.subType === 'exams' ? jobs.exams :
                       slides[currentIndex]?.subType === 'deadline' ? jobs.deadline :
                         slides[currentIndex]?.subType === 'deadline3' ? jobs.deadline3 :
-                          jobs.prebd
+                          slides[currentIndex]?.subType === 'hot' ? jobs.hot :
+                            jobs.prebd
               }
+              subType={slides[currentIndex]?.subType}
               title={
                 slides[currentIndex]?.subType === 'faridpur' ? 'ফরিদপুরের সরকারী চাকরী' :
                   slides[currentIndex]?.subType === 'govt' ? 'সরকারী চাকরী' :
                     slides[currentIndex]?.subType === 'exams' ? 'পরীক্ষার সময়সূচী' :
                       slides[currentIndex]?.subType === 'deadline' ? 'আগামীকালের ডেডলাইন' :
                         slides[currentIndex]?.subType === 'deadline3' ? 'আগামী ৩ দিনের ডেডলাইন' :
-                          'বাছাইকৃত সার্কুলার'
+                          slides[currentIndex]?.subType === 'hot' ? 'হট জবস' :
+                            'বাছাইকৃত সার্কুলার'
               }
-              duration={settings.dynamicDuration}
               internalInterval={settings.internalInterval}
-              currentIndex={currentIndex}
             />
           </motion.div>
         ) : (
