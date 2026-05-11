@@ -29,21 +29,25 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
   // JSONP Callback handler
   const handleJobData = useCallback((data) => {
     const entries = data.feed.entry || [];
-    const processedJobs = entries.map(entry => {
-      const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+      const processedJobs = entries.map(entry => {
+        const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
 
-      // Extract deadline if present in content (e.g., Deadline: 24 May 2026)
-      const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
-      const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
+        // Extract deadline if present in content (e.g., Deadline: 24 May 2026)
+        const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
+        const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
 
-      return {
-        id: entry.id.$t,
-        title: entry.title.$t, // Blogger structure
-        published: entry.published.$t,
-        deadline: deadline,
-        isBlogger: true
-      };
-    }).filter(job => job.title.trim() !== 'চাকরির খবর');
+        // Extract the post link (alternate link)
+        const postLink = entry.link?.find(l => l.rel === 'alternate')?.href;
+
+        return {
+          id: entry.id.$t,
+          title: entry.title.$t, // Blogger structure
+          published: entry.published.$t,
+          deadline: deadline,
+          view_circular: postLink,
+          isBlogger: true
+        };
+      }).filter(job => job.title.trim() !== 'চাকরির খবর');
     setInternalJobs(processedJobs);
     setLoading(false);
   }, []);
