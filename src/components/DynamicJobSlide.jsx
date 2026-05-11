@@ -138,15 +138,31 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
           {displayJobs.map((job, index) => {
             const jobTitle = job.isBlogger ? job.title : job.title.rendered;
             const jobDate = job.isBlogger ? job.deadline : (job.meta?._deadline_date || job.date);
+            const circularUrl = job.view_circular || job.meta?.view_circular;
 
             return (
               <div key={job.id} className="glass-card">
                 <h2 className="job-title-large" dangerouslySetInnerHTML={{ __html: jobTitle }}></h2>
 
                 <div className="card-footer">
-                  <p className="deadline-text">
-                    ডেডলাইন: <span className="deadline-highlight">{formatBengaliDate(jobDate)}</span>
-                  </p>
+                  <div className="footer-left">
+                    <p className="deadline-text">
+                      ডেডলাইন: <span className="deadline-highlight">{formatBengaliDate(jobDate)}</span>
+                    </p>
+                  </div>
+                  {circularUrl && (
+                    <div className="footer-right">
+                      <a 
+                        href={circularUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="details-link"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        বিস্তারিত
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             );

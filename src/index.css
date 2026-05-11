@@ -130,7 +130,9 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {
@@ -265,8 +267,42 @@ body {
 .card-footer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-left {
+  flex: 1;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.details-link {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 0.8rem 1.8rem;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.4rem;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.1);
+}
+
+.details-link:hover {
+  background: #38bdf8;
+  color: #0f172a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+  border-color: #38bdf8;
 }
 
 .footer-icon {
