@@ -4,6 +4,7 @@ import { Settings as SettingsIcon, Play, Pause, SkipForward, SkipBack, Shuffle, 
 import slideData from './slides.json';
 import Organizer from './Organizer';
 import DynamicJobSlide from './components/DynamicJobSlide';
+import TableJobSlide from './components/TableJobSlide';
 import './index.css';
 
 const JOB_FETCH_INTERVAL = 10; // Show a job slide every 10 images
@@ -35,7 +36,13 @@ function App() {
 
     const savedOrder = localStorage.getItem('custom-slide-order');
     if (savedOrder) {
-      setSlides(JSON.parse(savedOrder));
+      const parsedOrder = JSON.parse(savedOrder);
+      // Sync names from slideData to ensure renames reflect even in saved orders
+      const syncedOrder = parsedOrder.map(slide => {
+        const original = slideData.find(s => s.id === slide.id);
+        return original ? { ...slide, name: original.name } : slide;
+      });
+      setSlides(syncedOrder);
     } else {
       setSlides(slideData.map(s => ({ ...s, tempId: `sortable-${s.id}-${Math.random()}` })));
     }
@@ -114,6 +121,14 @@ function App() {
         if (!x) return acc.concat([current]);
         else return acc;
       }, []);
+
+      console.log("Fetched Jobs:", { 
+        prebd: prebdData?.length, 
+        faridpur: faridpurData?.length,
+        govt: govtData?.length,
+        exams: examsData?.length,
+        d1: d1Data?.length
+      });
 
       setJobs({
         prebd: prebdData || [],
@@ -306,30 +321,37 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <DynamicJobSlide
-              allJobs={
-                slides[currentIndex]?.subType === 'faridpur' ? jobs.faridpur :
-                  slides[currentIndex]?.subType === 'govt' ? jobs.govt :
-                    slides[currentIndex]?.subType === 'exams' ? jobs.exams :
-                      slides[currentIndex]?.subType === 'deadline' ? jobs.deadline :
-                        slides[currentIndex]?.subType === 'deadline3' ? jobs.deadline3 :
-                          slides[currentIndex]?.subType === 'hot' ? jobs.hot :
-                            slides[currentIndex]?.subType === 'latest' ? jobs.latest :
+            {slides[currentIndex]?.subType?.startsWith('table-') ? (
+              <TableJobSlide
+                allJobs={
+                  slides[currentIndex]?.subType === 'table-faridpur' ? jobs.faridpur :
+                    slides[currentIndex]?.subType === 'table-govt' ? jobs.govt :
+                      slides[currentIndex]?.subType === 'table-exams' ? jobs.exams :
+                        slides[currentIndex]?.subType === 'table-deadline' ? jobs.deadline :
+                          slides[currentIndex]?.subType === 'table-deadline3' ? jobs.deadline3 :
                             jobs.prebd
-              }
-              subType={slides[currentIndex]?.subType}
-              title={
-                slides[currentIndex]?.subType === 'faridpur' ? 'ফরিদপুরের সরকারী চাকরী' :
-                  slides[currentIndex]?.subType === 'govt' ? 'সরকারী চাকরী' :
-                    slides[currentIndex]?.subType === 'exams' ? 'পরীক্ষার সময়সূচী' :
-                      slides[currentIndex]?.subType === 'deadline' ? 'আগামীকালের ডেডলাইন' :
-                        slides[currentIndex]?.subType === 'deadline3' ? 'আগামী ৩ দিনের ডেডলাইন' :
-                          slides[currentIndex]?.subType === 'hot' ? 'হট জবস' :
-                            slides[currentIndex]?.subType === 'latest' ? 'লেটেস্ট জব ইনফো' :
-                            'বাছাইকৃত সার্কুলার'
-              }
-              internalInterval={settings.internalInterval}
-            />
+                }
+                title={slides[currentIndex]?.name}
+                isLoading={isLoading}
+                internalInterval={settings.internalInterval}
+              />
+            ) : (
+              <DynamicJobSlide
+                allJobs={
+                  slides[currentIndex]?.subType === 'faridpur' ? jobs.faridpur :
+                    slides[currentIndex]?.subType === 'govt' ? jobs.govt :
+                      slides[currentIndex]?.subType === 'exams' ? jobs.exams :
+                        slides[currentIndex]?.subType === 'deadline' ? jobs.deadline :
+                          slides[currentIndex]?.subType === 'deadline3' ? jobs.deadline3 :
+                            slides[currentIndex]?.subType === 'hot' ? jobs.hot :
+                              slides[currentIndex]?.subType === 'latest' ? jobs.latest :
+                                jobs.prebd
+                }
+                subType={slides[currentIndex]?.subType}
+                title={slides[currentIndex]?.name}
+                internalInterval={settings.internalInterval}
+              />
+            )}
           </motion.div>
         ) : (
           slides.length > 0 && (

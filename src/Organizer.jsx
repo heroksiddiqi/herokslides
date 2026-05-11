@@ -201,7 +201,13 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
     { id: 'dynamic-job-deadline', name: 'আগামীকালের ডেডলাইন', type: 'dynamic-job', category: 'Dynamic', subType: 'deadline' },
     { id: 'dynamic-job-deadline3', name: 'আগামী ৩ দিনের ডেডলাইন', type: 'dynamic-job', category: 'Dynamic', subType: 'deadline3' },
     { id: 'dynamic-job-hot', name: 'হট জবস', type: 'dynamic-job', category: 'Dynamic', subType: 'hot' },
-    { id: 'dynamic-job-latest', name: 'লেটেস্ট জব ইনফো', type: 'dynamic-job', category: 'Dynamic', subType: 'latest' }
+    { id: 'dynamic-job-latest', name: 'লেটেস্ট জব ইনফো', type: 'dynamic-job', category: 'Dynamic', subType: 'latest' },
+    {id: 'table-job-prebd', name: 'বাছাইকৃত সার্কুলার - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-prebd'},
+    {id: 'table-job-faridpur', name: 'ফরিদপুরের সরকারী চাকরী - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-faridpur'},
+    {id: 'table-job-govt', name: 'সরকারী চাকরী - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-govt'},
+    {id: 'table-job-exams', name: 'পরীক্ষার সময়সূচী - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-exams'},
+    {id: 'table-job-deadline', name: 'আগামীকালের ডেডলাইন - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-deadline'},
+    {id: 'table-job-deadline3', name: 'আগামী ৩ দিনের ডেডলাইন - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-deadline3'}
   ];
 
   const libraryWithDynamic = useMemo(() => {

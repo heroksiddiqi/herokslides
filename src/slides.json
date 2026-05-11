@@ -1282,5 +1282,47 @@
     "path": "/slides/002-passport/1.webp",
     "category": "002-passport",
     "name": "1.webp"
+  },
+  {
+    "id": "table-job-prebd",
+    "name": "বাছাইকৃত সার্কুলার - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-prebd"
+  },
+  {
+    "id": "table-job-faridpur",
+    "name": "ফরিদপুরের সরকারী চাকরী - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-faridpur"
+  },
+  {
+    "id": "table-job-govt",
+    "name": "সরকারী চাকরী - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-govt"
+  },
+  {
+    "id": "table-job-exams",
+    "name": "পরীক্ষার সময়সূচী - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-exams"
+  },
+  {
+    "id": "table-job-deadline",
+    "name": "আগামীকালের ডেডলাইন - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-deadline"
+  },
+  {
+    "id": "table-job-deadline3",
+    "name": "আগামী ৩ দিনের ডেডলাইন - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-deadline3"
   }
 ]
