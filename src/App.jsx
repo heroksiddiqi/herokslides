@@ -33,9 +33,12 @@ function App() {
       setSettings(JSON.parse(savedSettings));
     }
 
-    // Force load the newly generated slides.json and clear old local storage order
-    localStorage.removeItem('custom-slide-order');
-    setSlides(slideData.map(s => ({ ...s, tempId: `sortable-${s.id}-${Math.random()}` })));
+    const savedOrder = localStorage.getItem('custom-slide-order');
+    if (savedOrder) {
+      setSlides(JSON.parse(savedOrder));
+    } else {
+      setSlides(slideData.map(s => ({ ...s, tempId: `sortable-${s.id}-${Math.random()}` })));
+    }
 
     fetchJobs();
 
@@ -247,19 +250,11 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOrganizerMode, nextSlide, prevSlide]);
 
-  const isJobSlide = false; // Disable automatic injection as user wants manual control
-
-  // Logic for 4 jobs per slide
-  const getJobGroup = () => {
-    if (!jobs.length) return [];
-    const groupIndex = settings.onlyJobs
-      ? currentIndex % Math.ceil(jobs.length / 4)
-      : Math.floor(currentIndex / JOB_FETCH_INTERVAL) % Math.ceil(jobs.length / 4);
-    const start = groupIndex * 4;
-    return jobs.slice(start, start + 4);
+  const resetToDisk = () => {
+    if (window.confirm("This will refresh the library with any new or renamed files from disk. Your current playlist order will be preserved. Continue?")) {
+      window.location.reload();
+    }
   };
-
-  const currentJobsGroup = getJobGroup();
 
   const updateOrder = (newOrder) => {
     setSlides(newOrder);
@@ -276,6 +271,7 @@ function App() {
           allSlides={slideData}
           currentSlides={slides}
           onUpdateOrder={updateOrder}
+          onReset={resetToDisk}
         />
       </>
     );

@@ -17,7 +17,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDraggable, useDroppable, rectIntersection } from '@dnd-kit/core';
-import { Trash2, GripVertical, Download, Plus, Eye, EyeOff, Clock } from 'lucide-react';
+import { Trash2, GripVertical, Download, Plus, Eye, EyeOff, Clock, RefreshCcw } from 'lucide-react';
 
 // Draggable item for the Library (Right side)
 function LibraryItem({ slide, onAdd, usedCount }) {
@@ -77,14 +77,28 @@ function LibraryItem({ slide, onAdd, usedCount }) {
           {usedCount}x
         </div>
       )}
-      <div className="thumbnail-info">
-        <span style={{ fontSize: '0.7rem' }}>{slide.name}</span>
-        <button
-          onMouseDown={(e) => { e.stopPropagation(); onAdd(slide); }}
-          style={{ float: 'right', background: '#3b82f6', border: 'none', borderRadius: '4px', color: 'white', cursor: 'pointer' }}
-        >
-          <Plus size={14} />
-        </button>
+      <div className="thumbnail-info" style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '10px 8px' }}>
+        <span style={{ fontSize: '0.75rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: '100%', textAlign: 'left', display: 'block' }} title={slide.name}>
+          {slide.name}
+        </span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
+          <button
+            onClick={(e) => { e.stopPropagation(); onAdd(slide, 'top'); }}
+            onPointerDown={(e) => e.stopPropagation()}
+            style={{ flex: 1, background: '#10b981', border: 'none', borderRadius: '6px', color: 'white', cursor: 'pointer', padding: '8px 0', fontSize: '11px', fontWeight: '900', boxShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+            title="Add to Top"
+          >
+            TOP
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); onAdd(slide, 'bottom'); }}
+            onPointerDown={(e) => e.stopPropagation()}
+            style={{ flex: 1, background: '#3b82f6', border: 'none', borderRadius: '6px', color: 'white', cursor: 'pointer', padding: '8px 0', fontSize: '11px', fontWeight: '900', boxShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+            title="Add to Bottom"
+          >
+            END
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -160,7 +174,7 @@ function SortableSlide({ id, slide, onRemove, onUpdate, zoomLevel }) {
   );
 }
 
-export default function Organizer({ allSlides, currentSlides, onUpdateOrder }) {
+export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onReset }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeId, setActiveId] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1); // 1 to 3
@@ -261,9 +275,13 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder }) {
     setActiveId(null);
   };
 
-  const addSlide = (slide) => {
+  const addSlide = (slide, position = 'bottom') => {
     const newSlide = { ...slide, tempId: `sortable-${slide.id}-${Date.now()}` };
-    onUpdateOrder([...currentSlides, newSlide]);
+    if (position === 'top') {
+      onUpdateOrder([newSlide, ...currentSlides]);
+    } else {
+      onUpdateOrder([...currentSlides, newSlide]);
+    }
   };
 
   const removeSlide = (tempId) => {
@@ -338,6 +356,9 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder }) {
               <span style={{ fontSize: '10px', minWidth: '30px', textAlign: 'center' }}>{Math.round(zoomLevel * 100)}%</span>
               <button className="control-btn" style={{ padding: '4px' }} onClick={() => setZoomLevel(Math.min(3, zoomLevel + 0.5))}>+</button>
             </div>
+            <button onClick={onReset} className="control-btn" title="Sync from Disk (Reset Order)">
+              <RefreshCcw size={18} />
+            </button>
             <button onClick={downloadJson} className="control-btn" title="Download JSON">
               <Download size={18} />
             </button>

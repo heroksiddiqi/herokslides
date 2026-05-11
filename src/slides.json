@@ -30,18 +30,10 @@
     "name": "5.webp"
   },
   {
-    "id": "dynamic-job-hot",
-    "name": "হট জবস",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "hot",
-    "tempId": "auto-dynamic-1778432799446-4"
-  },
-  {
     "id": "img-6",
-    "path": "/slides/001-photo-print/chrome_pDS8na9km1.webp",
+    "path": "/slides/001-photo-print/6.webp",
     "category": "001-photo-print",
-    "name": "chrome_pDS8na9km1.webp"
+    "name": "6.webp"
   },
   {
     "id": "img-7",
@@ -66,14 +58,6 @@
     "path": "/slides/002-passport/4.webp",
     "category": "002-passport",
     "name": "4.webp"
-  },
-  {
-    "id": "dynamic-job-deadline",
-    "name": "আগামীকালের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline",
-    "tempId": "auto-dynamic-1778432799446-9"
   },
   {
     "id": "img-11",
@@ -106,14 +90,6 @@
     "name": "1.webp"
   },
   {
-    "id": "dynamic-job-latest",
-    "name": "লেটেস্ট জব ইনফো",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "latest",
-    "tempId": "auto-dynamic-1778432799446-14"
-  },
-  {
     "id": "img-16",
     "path": "/slides/003-job-application/2.webp",
     "category": "003-job-application",
@@ -142,14 +118,6 @@
     "path": "/slides/003-job-application/6.webp",
     "category": "003-job-application",
     "name": "6.webp"
-  },
-  {
-    "id": "dynamic-job-faridpur",
-    "name": "ফরিদপুরের সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "faridpur",
-    "tempId": "auto-dynamic-1778432799446-19"
   },
   {
     "id": "img-21",
@@ -182,14 +150,6 @@
     "name": "4.webp"
   },
   {
-    "id": "dynamic-job-govt",
-    "name": "সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "govt",
-    "tempId": "auto-dynamic-1778432799446-24"
-  },
-  {
     "id": "img-26",
     "path": "/slides/004-online-gd/5.webp",
     "category": "004-online-gd",
@@ -218,14 +178,6 @@
     "path": "/slides/005-cv/4.webp",
     "category": "005-cv",
     "name": "4.webp"
-  },
-  {
-    "id": "dynamic-job-exams",
-    "name": "পরীক্ষার সময়সূচী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "exams",
-    "tempId": "auto-dynamic-1778432799446-29"
   },
   {
     "id": "img-31",
@@ -258,14 +210,6 @@
     "name": "9.webp"
   },
   {
-    "id": "dynamic-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "prebd",
-    "tempId": "auto-dynamic-1778432799446-34"
-  },
-  {
     "id": "img-36",
     "path": "/slides/006-nid/1.webp",
     "category": "006-nid",
@@ -294,14 +238,6 @@
     "path": "/slides/006-nid/5.webp",
     "category": "006-nid",
     "name": "5.webp"
-  },
-  {
-    "id": "dynamic-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline3",
-    "tempId": "auto-dynamic-1778432799446-39"
   },
   {
     "id": "img-41",
@@ -334,14 +270,6 @@
     "name": "1.webp"
   },
   {
-    "id": "dynamic-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline3",
-    "tempId": "auto-dynamic-1778432799446-44"
-  },
-  {
     "id": "img-46",
     "path": "/slides/008-business-software/2.webp",
     "category": "008-business-software",
@@ -370,14 +298,6 @@
     "path": "/slides/008-business-software/6.webp",
     "category": "008-business-software",
     "name": "6.webp"
-  },
-  {
-    "id": "dynamic-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "prebd",
-    "tempId": "auto-dynamic-1778432799446-49"
   },
   {
     "id": "img-51",
@@ -410,14 +330,6 @@
     "name": "3.webp"
   },
   {
-    "id": "dynamic-job-exams",
-    "name": "পরীক্ষার সময়সূচী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "exams",
-    "tempId": "auto-dynamic-1778432799446-54"
-  },
-  {
     "id": "img-56",
     "path": "/slides/009-deed/4.webp",
     "category": "009-deed",
@@ -437,85 +349,69 @@
   },
   {
     "id": "img-59",
-    "path": "/slides/010-education-software/10.webp",
-    "category": "010-education-software",
-    "name": "10.webp"
-  },
-  {
-    "id": "img-60",
-    "path": "/slides/010-education-software/11.webp",
-    "category": "010-education-software",
-    "name": "11.webp"
-  },
-  {
-    "id": "dynamic-job-govt",
-    "name": "সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "govt",
-    "tempId": "auto-dynamic-1778432799446-59"
-  },
-  {
-    "id": "img-61",
-    "path": "/slides/010-education-software/12.webp",
-    "category": "010-education-software",
-    "name": "12.webp"
-  },
-  {
-    "id": "img-62",
     "path": "/slides/010-education-software/2.webp",
     "category": "010-education-software",
     "name": "2.webp"
   },
   {
-    "id": "img-63",
+    "id": "img-60",
     "path": "/slides/010-education-software/3.webp",
     "category": "010-education-software",
     "name": "3.webp"
   },
   {
-    "id": "img-64",
+    "id": "img-61",
     "path": "/slides/010-education-software/4.webp",
     "category": "010-education-software",
     "name": "4.webp"
   },
   {
-    "id": "img-65",
+    "id": "img-62",
     "path": "/slides/010-education-software/5.webp",
     "category": "010-education-software",
     "name": "5.webp"
   },
   {
-    "id": "dynamic-job-faridpur",
-    "name": "ফরিদপুরের সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "faridpur",
-    "tempId": "auto-dynamic-1778432799446-64"
-  },
-  {
-    "id": "img-66",
+    "id": "img-63",
     "path": "/slides/010-education-software/6.webp",
     "category": "010-education-software",
     "name": "6.webp"
   },
   {
-    "id": "img-67",
+    "id": "img-64",
     "path": "/slides/010-education-software/7.webp",
     "category": "010-education-software",
     "name": "7.webp"
   },
   {
-    "id": "img-68",
+    "id": "img-65",
     "path": "/slides/010-education-software/8.webp",
     "category": "010-education-software",
     "name": "8.webp"
   },
   {
-    "id": "img-69",
+    "id": "img-66",
     "path": "/slides/010-education-software/9.webp",
     "category": "010-education-software",
     "name": "9.webp"
+  },
+  {
+    "id": "img-67",
+    "path": "/slides/010-education-software/10.webp",
+    "category": "010-education-software",
+    "name": "10.webp"
+  },
+  {
+    "id": "img-68",
+    "path": "/slides/010-education-software/11.webp",
+    "category": "010-education-software",
+    "name": "11.webp"
+  },
+  {
+    "id": "img-69",
+    "path": "/slides/010-education-software/12.webp",
+    "category": "010-education-software",
+    "name": "12.webp"
   },
   {
     "id": "img-70",
@@ -524,74 +420,58 @@
     "name": "1.webp"
   },
   {
-    "id": "dynamic-job-latest",
-    "name": "লেটেস্ট জব ইনফো",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "latest",
-    "tempId": "auto-dynamic-1778432799446-69"
-  },
-  {
     "id": "img-71",
-    "path": "/slides/011-question-typing/10.webp",
-    "category": "011-question-typing",
-    "name": "10.webp"
-  },
-  {
-    "id": "img-72",
     "path": "/slides/011-question-typing/2.webp",
     "category": "011-question-typing",
     "name": "2.webp"
   },
   {
-    "id": "img-73",
+    "id": "img-72",
     "path": "/slides/011-question-typing/3.webp",
     "category": "011-question-typing",
     "name": "3.webp"
   },
   {
-    "id": "img-74",
+    "id": "img-73",
     "path": "/slides/011-question-typing/4.webp",
     "category": "011-question-typing",
     "name": "4.webp"
   },
   {
-    "id": "img-75",
+    "id": "img-74",
     "path": "/slides/011-question-typing/5.webp",
     "category": "011-question-typing",
     "name": "5.webp"
   },
   {
-    "id": "dynamic-job-deadline",
-    "name": "আগামীকালের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline",
-    "tempId": "auto-dynamic-1778432799446-74"
-  },
-  {
-    "id": "img-76",
+    "id": "img-75",
     "path": "/slides/011-question-typing/6.webp",
     "category": "011-question-typing",
     "name": "6.webp"
   },
   {
-    "id": "img-77",
+    "id": "img-76",
     "path": "/slides/011-question-typing/7.webp",
     "category": "011-question-typing",
     "name": "7.webp"
   },
   {
-    "id": "img-78",
+    "id": "img-77",
     "path": "/slides/011-question-typing/8.webp",
     "category": "011-question-typing",
     "name": "8.webp"
   },
   {
-    "id": "img-79",
+    "id": "img-78",
     "path": "/slides/011-question-typing/9.webp",
     "category": "011-question-typing",
     "name": "9.webp"
+  },
+  {
+    "id": "img-79",
+    "path": "/slides/011-question-typing/10.webp",
+    "category": "011-question-typing",
+    "name": "10.webp"
   },
   {
     "id": "img-80",
@@ -600,88 +480,64 @@
     "name": "1.webp"
   },
   {
-    "id": "dynamic-job-hot",
-    "name": "হট জবস",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "hot",
-    "tempId": "auto-dynamic-1778432799446-79"
-  },
-  {
     "id": "img-81",
-    "path": "/slides/012-land/10.webp",
-    "category": "012-land",
-    "name": "10.webp"
-  },
-  {
-    "id": "img-82",
-    "path": "/slides/012-land/11.webp",
-    "category": "012-land",
-    "name": "11.webp"
-  },
-  {
-    "id": "img-83",
     "path": "/slides/012-land/2.webp",
     "category": "012-land",
     "name": "2.webp"
   },
   {
-    "id": "img-84",
+    "id": "img-82",
     "path": "/slides/012-land/3.webp",
     "category": "012-land",
     "name": "3.webp"
   },
   {
-    "id": "img-85",
+    "id": "img-83",
     "path": "/slides/012-land/4.webp",
     "category": "012-land",
     "name": "4.webp"
   },
   {
-    "id": "dynamic-job-hot",
-    "name": "হট জবস",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "hot",
-    "tempId": "auto-dynamic-1778432799446-84"
-  },
-  {
-    "id": "img-86",
+    "id": "img-84",
     "path": "/slides/012-land/5.webp",
     "category": "012-land",
     "name": "5.webp"
   },
   {
-    "id": "img-87",
+    "id": "img-85",
     "path": "/slides/012-land/6.webp",
     "category": "012-land",
     "name": "6.webp"
   },
   {
-    "id": "img-88",
+    "id": "img-86",
     "path": "/slides/012-land/7.webp",
     "category": "012-land",
     "name": "7.webp"
   },
   {
-    "id": "img-89",
+    "id": "img-87",
     "path": "/slides/012-land/8.webp",
     "category": "012-land",
     "name": "8.webp"
   },
   {
-    "id": "img-90",
+    "id": "img-88",
     "path": "/slides/012-land/9.webp",
     "category": "012-land",
     "name": "9.webp"
   },
   {
-    "id": "dynamic-job-deadline",
-    "name": "আগামীকালের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline",
-    "tempId": "auto-dynamic-1778432799446-89"
+    "id": "img-89",
+    "path": "/slides/012-land/10.webp",
+    "category": "012-land",
+    "name": "10.webp"
+  },
+  {
+    "id": "img-90",
+    "path": "/slides/012-land/11.webp",
+    "category": "012-land",
+    "name": "11.webp"
   },
   {
     "id": "img-91",
@@ -691,85 +547,69 @@
   },
   {
     "id": "img-92",
-    "path": "/slides/013-police-clearance/10.webp",
-    "category": "013-police-clearance",
-    "name": "10.webp"
-  },
-  {
-    "id": "img-93",
-    "path": "/slides/013-police-clearance/11.webp",
-    "category": "013-police-clearance",
-    "name": "11.webp"
-  },
-  {
-    "id": "img-94",
-    "path": "/slides/013-police-clearance/12.webp",
-    "category": "013-police-clearance",
-    "name": "12.webp"
-  },
-  {
-    "id": "img-95",
     "path": "/slides/013-police-clearance/2.webp",
     "category": "013-police-clearance",
     "name": "2.webp"
   },
   {
-    "id": "dynamic-job-latest",
-    "name": "লেটেস্ট জব ইনফো",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "latest",
-    "tempId": "auto-dynamic-1778432799446-94"
-  },
-  {
-    "id": "img-96",
+    "id": "img-93",
     "path": "/slides/013-police-clearance/3.webp",
     "category": "013-police-clearance",
     "name": "3.webp"
   },
   {
-    "id": "img-97",
+    "id": "img-94",
     "path": "/slides/013-police-clearance/4.webp",
     "category": "013-police-clearance",
     "name": "4.webp"
   },
   {
-    "id": "img-98",
+    "id": "img-95",
     "path": "/slides/013-police-clearance/5.webp",
     "category": "013-police-clearance",
     "name": "5.webp"
   },
   {
-    "id": "img-99",
+    "id": "img-96",
     "path": "/slides/013-police-clearance/6.webp",
     "category": "013-police-clearance",
     "name": "6.webp"
   },
   {
-    "id": "img-100",
+    "id": "img-97",
     "path": "/slides/013-police-clearance/7.webp",
     "category": "013-police-clearance",
     "name": "7.webp"
   },
   {
-    "id": "dynamic-job-faridpur",
-    "name": "ফরিদপুরের সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "faridpur",
-    "tempId": "auto-dynamic-1778432799446-99"
-  },
-  {
-    "id": "img-101",
+    "id": "img-98",
     "path": "/slides/013-police-clearance/8.webp",
     "category": "013-police-clearance",
     "name": "8.webp"
   },
   {
-    "id": "img-102",
+    "id": "img-99",
     "path": "/slides/013-police-clearance/9.webp",
     "category": "013-police-clearance",
     "name": "9.webp"
+  },
+  {
+    "id": "img-100",
+    "path": "/slides/013-police-clearance/10.webp",
+    "category": "013-police-clearance",
+    "name": "10.webp"
+  },
+  {
+    "id": "img-101",
+    "path": "/slides/013-police-clearance/11.webp",
+    "category": "013-police-clearance",
+    "name": "11.webp"
+  },
+  {
+    "id": "img-102",
+    "path": "/slides/013-police-clearance/12.webp",
+    "category": "013-police-clearance",
+    "name": "12.webp"
   },
   {
     "id": "img-103",
@@ -788,14 +628,6 @@
     "path": "/slides/014-tin/3.webp",
     "category": "014-tin",
     "name": "3.webp"
-  },
-  {
-    "id": "dynamic-job-govt",
-    "name": "সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "govt",
-    "tempId": "auto-dynamic-1778432799446-104"
   },
   {
     "id": "img-106",
@@ -828,14 +660,6 @@
     "name": "3.webp"
   },
   {
-    "id": "dynamic-job-exams",
-    "name": "পরীক্ষার সময়সূচী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "exams",
-    "tempId": "auto-dynamic-1778432799446-109"
-  },
-  {
     "id": "img-111",
     "path": "/slides/015-zero-return/4.webp",
     "category": "015-zero-return",
@@ -864,14 +688,6 @@
     "path": "/slides/017-rail/1.webp",
     "category": "017-rail",
     "name": "1.webp"
-  },
-  {
-    "id": "dynamic-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "prebd",
-    "tempId": "auto-dynamic-1778432799446-114"
   },
   {
     "id": "img-116",
@@ -904,14 +720,6 @@
     "name": "1.webp"
   },
   {
-    "id": "dynamic-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline3",
-    "tempId": "auto-dynamic-1778432799446-119"
-  },
-  {
     "id": "img-121",
     "path": "/slides/018-nid-correction/2.webp",
     "category": "018-nid-correction",
@@ -940,14 +748,6 @@
     "path": "/slides/018-nid-correction/6.webp",
     "category": "018-nid-correction",
     "name": "6.webp"
-  },
-  {
-    "id": "dynamic-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline3",
-    "tempId": "auto-dynamic-1778432799446-124"
   },
   {
     "id": "img-126",
@@ -980,14 +780,6 @@
     "name": "5.webp"
   },
   {
-    "id": "dynamic-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "prebd",
-    "tempId": "auto-dynamic-1778432799446-129"
-  },
-  {
     "id": "img-131",
     "path": "/slides/019-driving-licence/6.webp",
     "category": "019-driving-licence",
@@ -1018,14 +810,6 @@
     "name": "2.webp"
   },
   {
-    "id": "dynamic-job-exams",
-    "name": "পরীক্ষার সময়সূচী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "exams",
-    "tempId": "auto-dynamic-1778432799446-134"
-  },
-  {
     "id": "img-136",
     "path": "/slides/021-misc/1.webp",
     "category": "021-misc",
@@ -1054,13 +838,5 @@
     "path": "/slides/021-misc/8.webp",
     "category": "021-misc",
     "name": "8.webp"
-  },
-  {
-    "id": "dynamic-job-govt",
-    "name": "সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "govt",
-    "tempId": "auto-dynamic-1778432799446-139"
   }
 ]
