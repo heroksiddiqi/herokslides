@@ -20,29 +20,91 @@ const formatBengaliDate = (dateStr) => {
 
 const toBengaliNumber = (num) => num.toString().replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
 
-const TableJobSlide = ({ allJobs = [], title, isLoading, internalInterval = 10 }) => {
+const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoading, internalInterval = 10 }) => {
+  const [internalJobs, setInternalJobs] = React.useState([]);
   const [pageIndex, setPageIndex] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
   const itemsPerPage = 10;
+
+  const activeJobs = allJobs.length > 0 ? allJobs : internalJobs;
+  const isLoading = externalLoading || loading;
+
+  // JSONP Callback handler
+  const handleJobData = React.useCallback((data) => {
+    const entries = data.feed.entry || [];
+    const processedJobs = entries.map(entry => {
+      const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+      const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
+      const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
+      const postLink = entry.link?.find(l => l.rel === 'alternate')?.href;
+
+      return {
+        id: entry.id.$t,
+        title: entry.title.$t,
+        published: entry.published.$t,
+        deadline: deadline,
+        view_circular: postLink,
+        isBlogger: true
+      };
+    }).filter(job => job.title.trim() !== 'চাকরির খবর');
+    setInternalJobs(processedJobs);
+    setLoading(false);
+  }, []);
+
+  // Fetch Blogger data
+  React.useEffect(() => {
+    if (allJobs.length > 0 || !subType) {
+      setLoading(false);
+      return;
+    }
+
+    // Only fetch if it's a blogger type (hot or latest) or table versions
+    const bloggerTypes = ['hot', 'latest', 'table-hot', 'table-latest'];
+    if (!bloggerTypes.includes(subType)) return;
+
+    setLoading(true);
+    const callbackName = `jsonp_callback_table_${Math.round(Math.random() * 1000000)}`;
+    window[callbackName] = (data) => {
+      handleJobData(data);
+      delete window[callbackName];
+    };
+
+    let label = "Hot job";
+    if (subType === 'latest' || subType === 'table-latest') label = "aaab";
+    if (subType === 'hot' || subType === 'table-hot') label = "Hot job";
+
+    const script = document.createElement('script');
+    script.src = `https://fearyourcreatorndonotwasteothersright.blogspot.com/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&callback=${callbackName}`;
+    script.async = true;
+    script.onerror = () => setLoading(false);
+
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) document.body.removeChild(script);
+      delete window[callbackName];
+    };
+  }, [subType, allJobs.length, handleJobData]);
 
   // Internal pagination logic
   React.useEffect(() => {
-    if (allJobs.length <= itemsPerPage) return;
+    if (activeJobs.length <= itemsPerPage) return;
 
     const interval = setInterval(() => {
-      setPageIndex(prev => (prev + itemsPerPage) % allJobs.length);
+      setPageIndex(prev => (prev + itemsPerPage) % activeJobs.length);
     }, internalInterval * 1000);
 
     return () => clearInterval(interval);
-  }, [allJobs.length, internalInterval]);
+  }, [activeJobs.length, internalInterval]);
 
   // Get current 10 jobs
   const displayJobs = [];
   for (let i = 0; i < itemsPerPage; i++) {
-    const job = allJobs[(pageIndex + i) % allJobs.length];
+    const job = activeJobs[(pageIndex + i) % activeJobs.length];
     if (job) displayJobs.push(job);
   }
 
-  if (isLoading && allJobs.length === 0) {
+  if (isLoading && activeJobs.length === 0) {
     return (
       <div className="dynamic-job-container table-mode dark-theme">
         <div className="loader-container">
@@ -53,7 +115,7 @@ const TableJobSlide = ({ allJobs = [], title, isLoading, internalInterval = 10 }
     );
   }
 
-  if (allJobs.length === 0) return null;
+  if (activeJobs.length === 0) return null;
 
   return (
     <div className="dynamic-job-container table-mode dark-theme">
@@ -72,7 +134,7 @@ const TableJobSlide = ({ allJobs = [], title, isLoading, internalInterval = 10 }
         className="table-wrapper glass-card"
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        key={pageIndex}
+        key={`${subType}-${pageIndex}`}
         transition={{ duration: 0.5 }}
       >
         <table className="job-table">

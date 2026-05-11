@@ -1324,5 +1324,19 @@
     "type": "dynamic-job",
     "category": "Dynamic",
     "subType": "table-deadline3"
+  },
+  {
+    "id": "table-job-hot",
+    "name": "হট জবস - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-hot"
+  },
+  {
+    "id": "table-job-latest",
+    "name": "লেটেস্ট জব ইনফো - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-latest"
   }
 ]

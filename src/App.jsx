@@ -329,8 +329,10 @@ function App() {
                       slides[currentIndex]?.subType === 'table-exams' ? jobs.exams :
                         slides[currentIndex]?.subType === 'table-deadline' ? jobs.deadline :
                           slides[currentIndex]?.subType === 'table-deadline3' ? jobs.deadline3 :
+                            (slides[currentIndex]?.subType === 'table-hot' || slides[currentIndex]?.subType === 'table-latest') ? [] :
                             jobs.prebd
                 }
+                subType={slides[currentIndex]?.subType}
                 title={slides[currentIndex]?.name}
                 isLoading={isLoading}
                 internalInterval={settings.internalInterval}

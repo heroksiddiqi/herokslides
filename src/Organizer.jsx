@@ -207,7 +207,9 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
     {id: 'table-job-govt', name: 'সরকারী চাকরী - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-govt'},
     {id: 'table-job-exams', name: 'পরীক্ষার সময়সূচী - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-exams'},
     {id: 'table-job-deadline', name: 'আগামীকালের ডেডলাইন - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-deadline'},
-    {id: 'table-job-deadline3', name: 'আগামী ৩ দিনের ডেডলাইন - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-deadline3'}
+    {id: 'table-job-deadline3', name: 'আগামী ৩ দিনের ডেডলাইন - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-deadline3'},
+    {id: 'table-job-hot', name: 'হট জবস - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-hot'},
+    {id: 'table-job-latest', name: 'লেটেস্ট জব ইনফো - টেবিল', type: 'dynamic-job', category: 'Dynamic', subType: 'table-latest'}
   ];
 
   const libraryWithDynamic = useMemo(() => {
