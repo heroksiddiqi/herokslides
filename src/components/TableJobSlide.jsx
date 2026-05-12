@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const formatBengaliDate = (dateStr) => {
   if (!dateStr) return 'চলমান';
@@ -58,8 +58,8 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
       return;
     }
 
-    // Only fetch if it's a blogger type (hot or latest) or table versions
-    const bloggerTypes = ['hot', 'latest', 'table-hot', 'table-latest'];
+    // List of types that should be fetched from Blogger if no WP data is provided
+    const bloggerTypes = ['hot', 'latest', 'govt', 'faridpur', 'table-hot', 'table-latest', 'table-govt', 'table-faridpur'];
     if (!bloggerTypes.includes(subType)) return;
 
     setLoading(true);
@@ -70,8 +70,11 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
     };
 
     let label = "Hot job";
-    if (subType === 'latest' || subType === 'table-latest') label = "aaab";
-    if (subType === 'hot' || subType === 'table-hot') label = "Hot job";
+    const type = subType.replace('table-', '');
+    if (type === 'latest') label = "aaab";
+    if (type === 'hot') label = "Hot job";
+    if (type === 'govt') label = "Govt job";
+    if (type === 'faridpur') label = "Faridpur job";
 
     const script = document.createElement('script');
     script.src = `https://fearyourcreatorndonotwasteothersright.blogspot.com/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&callback=${callbackName}`;
@@ -139,7 +142,15 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
     );
   }
 
-  if (activeJobs.length === 0) return null;
+  if (activeJobs.length === 0) {
+    return (
+      <div className="dynamic-job-container table-mode dark-theme">
+        <div className="loader-container">
+          <p className="loading-text" style={{ color: '#94a3b8' }}>এই ক্যাটাগরিতে কোনো তথ্য পাওয়া যায়নি</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="dynamic-job-container table-mode dark-theme">
@@ -150,7 +161,7 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
-            style={{ top: '40px', right: '40px', left: 'auto', transform: 'none' }}
+            style={{ top: '40px', right: '40px', left: 'auto', transform: 'none', fontSize: '1.2rem', padding: '0.5rem 1.5rem' }}
           >
             Paused
           </motion.div>
