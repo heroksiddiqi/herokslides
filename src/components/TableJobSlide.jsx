@@ -20,33 +20,60 @@ const formatBengaliDate = (dateStr) => {
 
 const toBengaliNumber = (num) => num.toString().replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
 
-const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoading, internalInterval = 10 }) => {
+const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoading, internalInterval = 10, bannedWords = '' }) => {
   const [internalJobs, setInternalJobs] = React.useState([]);
   const [pageIndex, setPageIndex] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
   const itemsPerPage = 10;
 
-  const activeJobs = allJobs.length > 0 ? allJobs : internalJobs;
+  const banned = React.useMemo(() => {
+    return (bannedWords || '')
+      .split(',')
+      .map(w => w.trim().toLowerCase())
+      .filter(w => w !== '');
+  }, [bannedWords]);
+
   const isLoading = externalLoading || loading;
+
+  const activeJobs = React.useMemo(() => {
+    const sourceJobs = allJobs.length > 0 ? allJobs : internalJobs;
+    if (banned.length === 0) return sourceJobs;
+
+    const textarea = document.createElement('textarea');
+    const decodeHTML = (html) => {
+      textarea.innerHTML = html;
+      return textarea.value;
+    };
+
+    return sourceJobs.filter(job => {
+      const jobTitle = decodeHTML(job.isBlogger ? job.title : (job.title?.rendered || job.title || '')).toLowerCase();
+      const jobContent = decodeHTML(job.isBlogger ? job.content : (job.content?.rendered || job.content || '')).toLowerCase();
+      
+      return !banned.some(word => jobTitle.includes(word) || jobContent.includes(word));
+    });
+  }, [allJobs, internalJobs, banned]);
 
   // JSONP Callback handler
   const handleJobData = React.useCallback((data) => {
     const entries = data.feed.entry || [];
     const processedJobs = entries.map(entry => {
       const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+      const title = entry.title.$t;
       const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
       const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
       const postLink = entry.link?.find(l => l.rel === 'alternate')?.href;
 
       return {
         id: entry.id.$t,
-        title: entry.title.$t,
+        title: title,
+        content: content,
         published: entry.published.$t,
         deadline: deadline,
         view_circular: postLink,
         isBlogger: true
       };
     }).filter(job => job.title.trim() !== 'চাকরির খবর');
+    
     setInternalJobs(processedJobs);
     setLoading(false);
   }, []);

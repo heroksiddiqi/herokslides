@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const formatBengaliDate = (dateStr) => {
@@ -18,36 +18,60 @@ const formatBengaliDate = (dateStr) => {
   }
 };
 
-const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }) => {
+const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10, bannedWords = '', isLoading: externalLoading }) => {
   const [internalJobs, setInternalJobs] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const activeJobs = allJobs.length > 0 ? allJobs : internalJobs;
+  const banned = useMemo(() => {
+    return (bannedWords || '')
+      .split(',')
+      .map(w => w.trim().toLowerCase())
+      .filter(w => w !== '');
+  }, [bannedWords]);
+
+  const activeJobs = useMemo(() => {
+    const sourceJobs = allJobs.length > 0 ? allJobs : internalJobs;
+    if (banned.length === 0) return sourceJobs;
+
+    const textarea = document.createElement('textarea');
+    const decodeHTML = (html) => {
+      textarea.innerHTML = html;
+      return textarea.value;
+    };
+
+    return sourceJobs.filter(job => {
+      const jobTitle = decodeHTML(job.isBlogger ? job.title : (job.title?.rendered || job.title || '')).toLowerCase();
+      const jobContent = decodeHTML(job.isBlogger ? job.content : (job.content?.rendered || job.content || '')).toLowerCase();
+      
+      return !banned.some(word => jobTitle.includes(word) || jobContent.includes(word));
+    });
+  }, [allJobs, internalJobs, banned]);
+
+  const isLoading = externalLoading || loading;
 
   // JSONP Callback handler
   const handleJobData = useCallback((data) => {
     const entries = data.feed.entry || [];
     const processedJobs = entries.map(entry => {
       const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
-
-      // Extract deadline if present in content (e.g., Deadline: 24 May 2026)
+      const title = entry.title.$t;
       const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
       const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
-
-      // Extract the post link (alternate link)
       const postLink = entry.link?.find(l => l.rel === 'alternate')?.href;
 
       return {
         id: entry.id.$t,
-        title: entry.title.$t, // Blogger structure
+        title: title,
+        content: content,
         published: entry.published.$t,
         deadline: deadline,
         view_circular: postLink,
         isBlogger: true
       };
     }).filter(job => job.title.trim() !== 'চাকরির খবর');
+    
     setInternalJobs(processedJobs);
     setLoading(false);
   }, []);
@@ -121,7 +145,7 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
     return () => clearInterval(interval);
   }, [activeJobs.length, internalInterval, isPaused]);
 
-  if (loading && activeJobs.length === 0) {
+  if (isLoading && activeJobs.length === 0) {
     return (
       <div className="dynamic-job-container dark-theme">
         <div className="loader-container">
@@ -132,7 +156,7 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
     );
   }
 
-  if (!loading && activeJobs.length === 0) return null;
+  if (!isLoading && activeJobs.length === 0) return null;
 
   // Get current 4 jobs
   const displayJobs = [];

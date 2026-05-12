@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Settings as SettingsIcon, Play, Pause, SkipForward, SkipBack, Shuffle, List, Maximize, Minimize, Layout, Tv } from 'lucide-react';
 import slideData from './slides.json';
@@ -21,7 +21,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
-  const [jobs, setJobs] = useState({ prebd: [], faridpur: [], govt: [], exams: [], deadline: [], deadline3: [], hot: [] });
+  const [jobs, setJobs] = useState({ prebd: [], faridpur: [], govt: [], exams: [], deadline: [], deadline3: [], hot: [], latest: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isOrganizerMode, setIsOrganizerMode] = useState(false);
@@ -30,6 +30,7 @@ function App() {
     dynamicDuration: 30,
     internalInterval: 10,
     isRandom: false,
+    bannedWords: '',
   });
   const [isControlsVisible, setIsControlsVisible] = useState(true);
   const controlsTimeoutRef = useRef(null);
@@ -131,14 +132,6 @@ function App() {
         else return acc;
       }, []);
 
-      console.log("Fetched Jobs:", {
-        prebd: prebdData?.length,
-        faridpur: faridpurData?.length,
-        govt: govtData?.length,
-        exams: examsData?.length,
-        d1: d1Data?.length
-      });
-
       setJobs({
         prebd: prebdData || [],
         faridpur: faridpurData || [],
@@ -153,6 +146,47 @@ function App() {
       console.error("Failed to fetch jobs", error);
     }
   };
+
+  const filteredJobs = useMemo(() => {
+    const banned = (settings.bannedWords || '')
+      .split(',')
+      .map(w => w.trim().toLowerCase())
+      .filter(w => w !== '');
+
+    if (banned.length === 0) return jobs;
+
+    const decodeHTML = (html) => {
+      const txt = document.createElement('textarea');
+      txt.innerHTML = html;
+      return txt.value;
+    };
+
+    const filterList = (list) => {
+      if (!list || !Array.isArray(list)) return [];
+      return list.filter(item => {
+        const title = decodeHTML(item.title?.rendered || item.title || '').toLowerCase();
+        const content = decodeHTML(item.content?.rendered || item.content || '').toLowerCase();
+        const excerpt = decodeHTML(item.excerpt?.rendered || '').toLowerCase();
+        
+        return !banned.some(word => 
+          title.includes(word) || 
+          content.includes(word) || 
+          excerpt.includes(word)
+        );
+      });
+    };
+
+    return {
+      prebd: filterList(jobs.prebd),
+      faridpur: filterList(jobs.faridpur),
+      govt: filterList(jobs.govt),
+      exams: filterList(jobs.exams),
+      deadline: filterList(jobs.deadline),
+      deadline3: filterList(jobs.deadline3),
+      hot: filterList(jobs.hot),
+      latest: filterList(jobs.latest)
+    };
+  }, [jobs, settings.bannedWords]);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => {
@@ -391,34 +425,37 @@ function App() {
               {slides[currentIndex]?.subType?.startsWith('table-') ? (
                 <TableJobSlide
                   allJobs={
-                    slides[currentIndex]?.subType === 'table-faridpur' ? jobs.faridpur :
-                      slides[currentIndex]?.subType === 'table-govt' ? jobs.govt :
-                        slides[currentIndex]?.subType === 'table-exams' ? jobs.exams :
-                          slides[currentIndex]?.subType === 'table-deadline' ? jobs.deadline :
-                            slides[currentIndex]?.subType === 'table-deadline3' ? jobs.deadline3 :
+                    slides[currentIndex]?.subType === 'table-faridpur' ? filteredJobs.faridpur :
+                      slides[currentIndex]?.subType === 'table-govt' ? filteredJobs.govt :
+                        slides[currentIndex]?.subType === 'table-exams' ? filteredJobs.exams :
+                          slides[currentIndex]?.subType === 'table-deadline' ? filteredJobs.deadline :
+                            slides[currentIndex]?.subType === 'table-deadline3' ? filteredJobs.deadline3 :
                               (slides[currentIndex]?.subType === 'table-hot' || slides[currentIndex]?.subType === 'table-latest') ? [] :
-                                jobs.prebd
+                                filteredJobs.prebd
                   }
                   subType={slides[currentIndex]?.subType}
                   title={slides[currentIndex]?.name}
                   isLoading={isLoading}
                   internalInterval={settings.internalInterval}
+                  bannedWords={settings.bannedWords}
                 />
               ) : (
                 <DynamicJobSlide
                   allJobs={
-                    slides[currentIndex]?.subType === 'faridpur' ? jobs.faridpur :
-                      slides[currentIndex]?.subType === 'govt' ? jobs.govt :
-                        slides[currentIndex]?.subType === 'exams' ? jobs.exams :
-                          slides[currentIndex]?.subType === 'deadline' ? jobs.deadline :
-                            slides[currentIndex]?.subType === 'deadline3' ? jobs.deadline3 :
-                              slides[currentIndex]?.subType === 'hot' ? jobs.hot :
-                                slides[currentIndex]?.subType === 'latest' ? jobs.latest :
-                                  jobs.prebd
+                    slides[currentIndex]?.subType === 'faridpur' ? filteredJobs.faridpur :
+                      slides[currentIndex]?.subType === 'govt' ? filteredJobs.govt :
+                        slides[currentIndex]?.subType === 'exams' ? filteredJobs.exams :
+                          slides[currentIndex]?.subType === 'deadline' ? filteredJobs.deadline :
+                            slides[currentIndex]?.subType === 'deadline3' ? filteredJobs.deadline3 :
+                              slides[currentIndex]?.subType === 'hot' ? filteredJobs.hot :
+                                slides[currentIndex]?.subType === 'latest' ? filteredJobs.latest :
+                                  filteredJobs.prebd
                   }
                   subType={slides[currentIndex]?.subType}
                   title={slides[currentIndex]?.name}
+                  isLoading={isLoading}
                   internalInterval={settings.internalInterval}
+                  bannedWords={settings.bannedWords}
                 />
               )}
             </motion.div>
@@ -509,6 +546,16 @@ function App() {
                 className="settings-input"
                 value={settings.internalInterval}
                 onChange={(e) => updateSetting('internalInterval', parseInt(e.target.value) || 1)}
+              />
+            </div>
+            <div className="settings-group">
+              <label className="settings-label">Banned Words (comma separated)</label>
+              <textarea
+                className="settings-input"
+                style={{ height: '80px', paddingTop: '8px', resize: 'vertical' }}
+                value={settings.bannedWords}
+                placeholder="e.g. bank, ngo, ব্যাংক, এনজিও"
+                onChange={(e) => updateSetting('bannedWords', e.target.value)}
               />
             </div>
             <button
