@@ -309,6 +309,25 @@ function App() {
     localStorage.setItem('custom-slide-order', JSON.stringify(newOrder));
   };
 
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const targetWidth = 1920;
+      const targetHeight = 1080;
+      const widthScale = window.innerWidth / targetWidth;
+      const heightScale = window.innerHeight / targetHeight;
+      // Use the smaller scale to ensure content fits both dimensions
+      // For digital signage, we usually want to fill 1080p exactly.
+      // If the screen is 1080p but scaled, this will compensate.
+      setScale(Math.min(widthScale, heightScale));
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   if (isOrganizerMode) {
     return (
       <>
@@ -327,98 +346,114 @@ function App() {
 
   return (
     <div className="slideshow-container">
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            className="modal-backdrop"
-            style={{ zIndex: 2000, background: '#000', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
-            exit={{ opacity: 0 }}
-          >
+      <div 
+        className="resolution-protector"
+        style={{
+          width: '1920px',
+          height: '1080px',
+          transform: `scale(${scale})`,
+          transformOrigin: 'top left',
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          marginLeft: `-${(1920 * scale) / 2}px`,
+          marginTop: `-${(1080 * scale) / 2}px`,
+          overflow: 'hidden'
+        }}
+      >
+        <AnimatePresence>
+          {isLoading && (
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-              style={{ width: 50, height: 50, border: '4px solid #3b82f6', borderTopColor: 'transparent', borderRadius: '50%' }}
-            />
-            <p style={{ marginTop: 20, color: '#94a3b8' }}>Loading Slides...</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              className="modal-backdrop"
+              style={{ zIndex: 2000, background: '#000', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                style={{ width: 50, height: 50, border: '4px solid #3b82f6', borderTopColor: 'transparent', borderRadius: '50%' }}
+              />
+              <p style={{ marginTop: 20, color: '#94a3b8' }}>Loading Slides...</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-      <AnimatePresence>
-        {slides[currentIndex]?.type === 'dynamic-job' ? (
-          <motion.div
-            key={`dynamic-${currentIndex}-${slides[currentIndex]?.id}`}
-            className="slide"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.08 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          >
-            {slides[currentIndex]?.subType?.startsWith('table-') ? (
-              <TableJobSlide
-                allJobs={
-                  slides[currentIndex]?.subType === 'table-faridpur' ? jobs.faridpur :
-                    slides[currentIndex]?.subType === 'table-govt' ? jobs.govt :
-                      slides[currentIndex]?.subType === 'table-exams' ? jobs.exams :
-                        slides[currentIndex]?.subType === 'table-deadline' ? jobs.deadline :
-                          slides[currentIndex]?.subType === 'table-deadline3' ? jobs.deadline3 :
-                            (slides[currentIndex]?.subType === 'table-hot' || slides[currentIndex]?.subType === 'table-latest') ? [] :
-                              jobs.prebd
-                }
-                subType={slides[currentIndex]?.subType}
-                title={slides[currentIndex]?.name}
-                isLoading={isLoading}
-                internalInterval={settings.internalInterval}
-              />
-            ) : (
-              <DynamicJobSlide
-                allJobs={
-                  slides[currentIndex]?.subType === 'faridpur' ? jobs.faridpur :
-                    slides[currentIndex]?.subType === 'govt' ? jobs.govt :
-                      slides[currentIndex]?.subType === 'exams' ? jobs.exams :
-                        slides[currentIndex]?.subType === 'deadline' ? jobs.deadline :
-                          slides[currentIndex]?.subType === 'deadline3' ? jobs.deadline3 :
-                            slides[currentIndex]?.subType === 'hot' ? jobs.hot :
-                              slides[currentIndex]?.subType === 'latest' ? jobs.latest :
-                                jobs.prebd
-                }
-                subType={slides[currentIndex]?.subType}
-                title={slides[currentIndex]?.name}
-                internalInterval={settings.internalInterval}
-              />
-            )}
-          </motion.div>
-        ) : (
-          slides.length > 0 && (
+        <AnimatePresence>
+          {slides[currentIndex]?.type === 'dynamic-job' ? (
             <motion.div
-              key={slides[currentIndex]?.id}
+              key={`dynamic-${currentIndex}-${slides[currentIndex]?.id}`}
               className="slide"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.08 }}
-              transition={{ duration: 1.4, ease: "easeInOut" }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
             >
-              <img src={getImagePath(slides[currentIndex]?.path)} alt={slides[currentIndex]?.name} />
+              {slides[currentIndex]?.subType?.startsWith('table-') ? (
+                <TableJobSlide
+                  allJobs={
+                    slides[currentIndex]?.subType === 'table-faridpur' ? jobs.faridpur :
+                      slides[currentIndex]?.subType === 'table-govt' ? jobs.govt :
+                        slides[currentIndex]?.subType === 'table-exams' ? jobs.exams :
+                          slides[currentIndex]?.subType === 'table-deadline' ? jobs.deadline :
+                            slides[currentIndex]?.subType === 'table-deadline3' ? jobs.deadline3 :
+                              (slides[currentIndex]?.subType === 'table-hot' || slides[currentIndex]?.subType === 'table-latest') ? [] :
+                                jobs.prebd
+                  }
+                  subType={slides[currentIndex]?.subType}
+                  title={slides[currentIndex]?.name}
+                  isLoading={isLoading}
+                  internalInterval={settings.internalInterval}
+                />
+              ) : (
+                <DynamicJobSlide
+                  allJobs={
+                    slides[currentIndex]?.subType === 'faridpur' ? jobs.faridpur :
+                      slides[currentIndex]?.subType === 'govt' ? jobs.govt :
+                        slides[currentIndex]?.subType === 'exams' ? jobs.exams :
+                          slides[currentIndex]?.subType === 'deadline' ? jobs.deadline :
+                            slides[currentIndex]?.subType === 'deadline3' ? jobs.deadline3 :
+                              slides[currentIndex]?.subType === 'hot' ? jobs.hot :
+                                slides[currentIndex]?.subType === 'latest' ? jobs.latest :
+                                  jobs.prebd
+                  }
+                  subType={slides[currentIndex]?.subType}
+                  title={slides[currentIndex]?.name}
+                  internalInterval={settings.internalInterval}
+                />
+              )}
             </motion.div>
-          )
+          ) : (
+            slides.length > 0 && (
+              <motion.div
+                key={slides[currentIndex]?.id}
+                className="slide"
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.08 }}
+                transition={{ duration: 1.4, ease: "easeInOut" }}
+              >
+                <img src={getImagePath(slides[currentIndex]?.path)} alt={slides[currentIndex]?.name} />
+              </motion.div>
+            )
+          )}
+        </AnimatePresence>
+
+        {/* Progress Bar */}
+        {isPlaying && (
+          <motion.div
+            className="progress-bar"
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            key={`progress-${currentIndex}`}
+            transition={{
+              duration: slides[currentIndex]?.duration || (slides[currentIndex]?.type === 'dynamic-job' ? settings.dynamicDuration : settings.duration),
+              ease: "linear"
+            }}
+          />
         )}
-      </AnimatePresence>
+      </div>
 
-      {/* Progress Bar */}
-      {isPlaying && (
-        <motion.div
-          className="progress-bar"
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          key={`progress-${currentIndex}`}
-          transition={{
-            duration: slides[currentIndex]?.duration || (slides[currentIndex]?.type === 'dynamic-job' ? settings.dynamicDuration : settings.duration),
-            ease: "linear"
-          }}
-        />
-      )}
-
-      {/* Controls */}
+      {/* Controls - These should NOT be scaled, or scaled differently, but keep them on top */}
       <div className={`controls-overlay ${isControlsVisible ? 'visible' : ''}`}>
         <button className="control-btn" onClick={prevSlide}><SkipBack size={20} /></button>
         <button className="control-btn" onClick={() => setIsPlaying(!isPlaying)}>
