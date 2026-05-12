@@ -26,11 +26,11 @@ function App() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isOrganizerMode, setIsOrganizerMode] = useState(false);
   const [settings, setSettings] = useState({
-    duration: 5,
-    dynamicDuration: 30,
-    internalInterval: 10,
+    duration: 20,
+    dynamicDuration: 60,
+    internalInterval: 20,
     isRandom: false,
-    bannedWords: '',
+    bannedWords: 'bank,ngo,ব্যাংক,Insurance,বীমা,ইন্সুরেন্স,ইন্স্যুরেন্স,Microfinance,ক্ষুদ্রঋণ,ঋণ,Tobacco,তামাক,Credit,ক্রেডিট',
   });
   const [isControlsVisible, setIsControlsVisible] = useState(true);
   const controlsTimeoutRef = useRef(null);
@@ -167,10 +167,10 @@ function App() {
         const title = decodeHTML(item.title?.rendered || item.title || '').toLowerCase();
         const content = decodeHTML(item.content?.rendered || item.content || '').toLowerCase();
         const excerpt = decodeHTML(item.excerpt?.rendered || '').toLowerCase();
-        
-        return !banned.some(word => 
-          title.includes(word) || 
-          content.includes(word) || 
+
+        return !banned.some(word =>
+          title.includes(word) ||
+          content.includes(word) ||
           excerpt.includes(word)
         );
       });
@@ -380,7 +380,7 @@ function App() {
 
   return (
     <div className="slideshow-container">
-      <div 
+      <div
         className="resolution-protector"
         style={{
           width: '1920px',
