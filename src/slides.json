@@ -4,7 +4,7 @@
     "path": "/slides/001-photo-print/1.webp",
     "category": "001-photo-print",
     "name": "1.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-8",
@@ -29,7 +29,7 @@
     "path": "/slides/005-cv/2.webp",
     "category": "005-cv",
     "name": "2.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "dynamic-job-prebd",
@@ -135,7 +135,7 @@
     "path": "/slides/018-nid-correction/1.webp",
     "category": "018-nid-correction",
     "name": "1.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-133",
@@ -198,7 +198,7 @@
     "path": "/slides/005-cv/3.webp",
     "category": "005-cv",
     "name": "3.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-40",
@@ -242,7 +242,7 @@
     "path": "/slides/009-deed/5.webp",
     "category": "009-deed",
     "name": "5.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-71",
@@ -286,7 +286,7 @@
     "path": "/slides/015-zero-return/2.webp",
     "category": "015-zero-return",
     "name": "2.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "dynamic-job-deadline3",
@@ -343,7 +343,7 @@
     "path": "/slides/001-photo-print/3.webp",
     "category": "001-photo-print",
     "name": "3.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-10",
@@ -393,7 +393,7 @@
     "path": "/slides/006-nid/2.webp",
     "category": "006-nid",
     "name": "2.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-44",
@@ -413,7 +413,7 @@
     "path": "/slides/008-business-software/2.webp",
     "category": "008-business-software",
     "name": "2.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-50",
@@ -481,7 +481,7 @@
     "path": "/slides/014-tin/1.webp",
     "category": "014-tin",
     "name": "1.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "table-job-hot",
@@ -544,7 +544,7 @@
     "path": "/slides/001-photo-print/4.webp",
     "category": "001-photo-print",
     "name": "4.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-60",
@@ -588,7 +588,7 @@
     "path": "/slides/005-cv/6.webp",
     "category": "005-cv",
     "name": "6.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-41",
@@ -632,7 +632,7 @@
     "path": "/slides/011-question-typing/7.webp",
     "category": "011-question-typing",
     "name": "7.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-61",
@@ -689,7 +689,7 @@
     "path": "/slides/015-zero-return/1.webp",
     "category": "015-zero-return",
     "name": "1.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-119",
@@ -751,7 +751,7 @@
     "path": "/slides/001-photo-print/6.webp",
     "category": "001-photo-print",
     "name": "6.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-13",
@@ -795,7 +795,7 @@
     "path": "/slides/005-cv/4.webp",
     "category": "005-cv",
     "name": "4.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "table-job-deadline",
@@ -827,7 +827,7 @@
     "path": "/slides/008-business-software/3.webp",
     "category": "008-business-software",
     "name": "3.webp",
-    "duration": 20
+    "duration": null
   },
   {
     "id": "img-54",
@@ -859,7 +859,7 @@
     "path": "/slides/011-question-typing/3.webp",
     "category": "011-question-typing",
     "name": "3.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-73",
@@ -878,7 +878,7 @@
     "path": "/slides/012-land/7.webp",
     "category": "012-land",
     "name": "7.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "dynamic-job-deadline3",
@@ -935,7 +935,7 @@
     "path": "/slides/002-passport/8.webp",
     "category": "002-passport",
     "name": "8.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-31",
@@ -985,7 +985,7 @@
     "path": "/slides/009-deed/1.webp",
     "category": "009-deed",
     "name": "1.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-66",
@@ -1048,7 +1048,7 @@
     "path": "/slides/013-police-clearance/6.webp",
     "category": "013-police-clearance",
     "name": "6.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-106",
@@ -1098,7 +1098,7 @@
     "path": "/slides/019-driving-licence/3.webp",
     "category": "019-driving-licence",
     "name": "3.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-130",
@@ -1124,7 +1124,7 @@
     "path": "/slides/006-nid/4.webp",
     "category": "006-nid",
     "name": "4.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-55",
@@ -1168,14 +1168,14 @@
     "path": "/slides/005-cv/9.webp",
     "category": "005-cv",
     "name": "9.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-53",
     "path": "/slides/009-deed/1.webp",
     "category": "009-deed",
     "name": "1.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-56",
@@ -1201,7 +1201,7 @@
     "path": "/slides/001-photo-print/1.webp",
     "category": "001-photo-print",
     "name": "1.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-132",
@@ -1257,14 +1257,14 @@
     "path": "/slides/008-business-software/8.webp",
     "category": "008-business-software",
     "name": "8.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-51",
     "path": "/slides/008-business-software/7.webp",
     "category": "008-business-software",
     "name": "7.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "table-job-prebd",
@@ -1278,7 +1278,7 @@
     "path": "/slides/010-education-software/6.webp",
     "category": "010-education-software",
     "name": "6.webp",
-    "duration": 20
+    "duration": null
   },
   {
     "id": "img-61",
@@ -1322,7 +1322,7 @@
     "path": "/slides/017-rail/3.webp",
     "category": "017-rail",
     "name": "3.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-119",
@@ -1335,7 +1335,7 @@
     "path": "/slides/018-nid-correction/5.webp",
     "category": "018-nid-correction",
     "name": "5.webp",
-    "duration": 15
+    "duration": null
   },
   {
     "id": "img-121",
