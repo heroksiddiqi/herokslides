@@ -141,7 +141,9 @@ function SortableSlide({ id, slide, onRemove, onUpdate, zoomLevel }) {
         <img src={slide.path} style={thumbStyle} className="slide-item-thumb" alt="" />
       )}
       <div className="slide-item-info" style={{ fontSize: `${0.8 * zoomLevel}rem`, flex: 1, display: 'flex', flexDirection: 'column', gap: '2px' }}>
-        <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '120px' }}>{slide.name}</span>
+        <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {slide.type === 'dynamic-job' ? slide.name : (slide.path ? slide.path.replace('/slides/', '') : slide.name)}
+        </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
           <Clock size={10} color="#94a3b8" />
           <input 
@@ -457,7 +459,9 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
               pointerEvents: 'none'
             }}>
               <GripVertical size={16} color="#3b82f6" />
-              <div className="slide-item-info">{activeSlide?.name}</div>
+              <div className="slide-item-info">
+                {activeSlide?.type === 'dynamic-job' ? activeSlide?.name : (activeSlide?.path ? activeSlide.path.replace('/slides/', '') : activeSlide?.name)}
+              </div>
             </div>
           )
         ) : null}
