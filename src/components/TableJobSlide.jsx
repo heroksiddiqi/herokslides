@@ -86,16 +86,40 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
     };
   }, [subType, allJobs.length, handleJobData]);
 
+  const [isPaused, setIsPaused] = React.useState(false);
+
+  const handleNext = () => {
+    setPageIndex(prev => (prev + itemsPerPage) % activeJobs.length);
+  };
+
+  const handlePrev = () => {
+    setPageIndex(prev => {
+      const nextIndex = prev - itemsPerPage;
+      return nextIndex < 0 ? (activeJobs.length - (activeJobs.length % itemsPerPage || itemsPerPage)) : nextIndex;
+    });
+  };
+
+  // Handle 'K' key to pause/resume internal rotation
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key.toLowerCase() === 'k') {
+        setIsPaused(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   // Internal pagination logic
   React.useEffect(() => {
-    if (activeJobs.length <= itemsPerPage) return;
+    if (activeJobs.length <= itemsPerPage || isPaused) return;
 
     const interval = setInterval(() => {
-      setPageIndex(prev => (prev + itemsPerPage) % activeJobs.length);
+      handleNext();
     }, internalInterval * 1000);
 
     return () => clearInterval(interval);
-  }, [activeJobs.length, internalInterval]);
+  }, [activeJobs.length, internalInterval, isPaused]);
 
   // Get current 10 jobs
   const displayJobs = [];
@@ -119,6 +143,34 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
 
   return (
     <div className="dynamic-job-container table-mode dark-theme">
+      <AnimatePresence>
+        {isPaused && (
+          <motion.div 
+            className="pause-indicator"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            style={{ top: '40px', right: '40px', left: 'auto', transform: 'none' }}
+          >
+            Paused
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {activeJobs.length > itemsPerPage && (
+        <>
+          <button className="nav-arrow left" onClick={handlePrev} aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button className="nav-arrow right" onClick={handleNext} aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </>
+      )}
+
       <header className="slide-header" style={{ marginBottom: '0.5rem' }}>
         <motion.h1
           className="main-heading table-heading"

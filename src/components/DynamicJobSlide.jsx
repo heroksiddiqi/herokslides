@@ -87,15 +87,39 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
     };
   }, [subType, allJobs.length, handleJobData]);
 
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handleNext = () => {
+    setCurrentIndex(prev => (prev + 4) % activeJobs.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex(prev => {
+      const nextIndex = prev - 4;
+      return nextIndex < 0 ? (activeJobs.length - (activeJobs.length % 4 || 4)) : nextIndex;
+    });
+  };
+
+  // Handle 'K' key to pause/resume internal rotation
   useEffect(() => {
-    if (activeJobs.length <= 4) return;
+    const handleKeyDown = (e) => {
+      if (e.key.toLowerCase() === 'k') {
+        setIsPaused(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (activeJobs.length <= 4 || isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 4) % activeJobs.length);
+      handleNext();
     }, internalInterval * 1000);
 
     return () => clearInterval(interval);
-  }, [activeJobs.length, internalInterval]);
+  }, [activeJobs.length, internalInterval, isPaused]);
 
   if (loading && activeJobs.length === 0) {
     return (
@@ -119,6 +143,33 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
 
   return (
     <div className="dynamic-job-container dark-theme">
+      <AnimatePresence>
+        {isPaused && (
+          <motion.div 
+            className="pause-indicator"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+          >
+            Paused
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {activeJobs.length > 4 && (
+        <>
+          <button className="nav-arrow left" onClick={handlePrev} aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button className="nav-arrow right" onClick={handleNext} aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </>
+      )}
+
       <header className="slide-header">
         <motion.h1
           className="main-heading"
@@ -145,7 +196,7 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
             const circularUrl = job.view_circular || job.meta?.view_circular;
 
             return (
-              <div key={job.id} className="glass-card">
+              <div key={`${job.id}-${index}`} className="glass-card">
                 <h2 className="job-title-large" dangerouslySetInnerHTML={{ __html: jobTitle }}></h2>
 
                 <div className="card-footer">
