@@ -24,6 +24,8 @@ function App() {
     internalInterval: 10,
     isRandom: false,
   });
+  const [isControlsVisible, setIsControlsVisible] = useState(true);
+  const controlsTimeoutRef = useRef(null);
 
   const timerRef = useRef(null);
 
@@ -265,6 +267,30 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOrganizerMode, nextSlide, prevSlide]);
 
+  // Bottom dock auto-hide logic
+  useEffect(() => {
+    const handleMouseMove = () => {
+      setIsControlsVisible(true);
+      if (controlsTimeoutRef.current) {
+        clearTimeout(controlsTimeoutRef.current);
+      }
+      controlsTimeoutRef.current = setTimeout(() => {
+        setIsControlsVisible(false);
+      }, 3000);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    // Initial timer
+    controlsTimeoutRef.current = setTimeout(() => {
+      setIsControlsVisible(false);
+    }, 3000);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
+    };
+  }, []);
+
   const resetToDisk = () => {
     if (window.confirm("This will refresh the library with any new or renamed files from disk. Your current playlist order will be preserved. Continue?")) {
       window.location.reload();
@@ -386,7 +412,7 @@ function App() {
       )}
 
       {/* Controls */}
-      <div className="controls-overlay">
+      <div className={`controls-overlay ${isControlsVisible ? 'visible' : ''}`}>
         <button className="control-btn" onClick={prevSlide}><SkipBack size={20} /></button>
         <button className="control-btn" onClick={() => setIsPlaying(!isPlaying)}>
           {isPlaying ? <Pause size={20} /> : <Play size={20} />}
