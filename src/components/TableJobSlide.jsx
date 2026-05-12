@@ -156,7 +156,7 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
     <div className="dynamic-job-container table-mode dark-theme">
       <AnimatePresence>
         {isPaused && (
-          <motion.div 
+          <motion.div
             className="pause-indicator"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -182,7 +182,7 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
         </>
       )}
 
-      <header className="slide-header" style={{ marginBottom: '0.5rem' }}>
+      <header className="slide-header">
         <motion.h1
           className="main-heading table-heading"
           initial={{ opacity: 0, y: -20 }}
@@ -193,7 +193,7 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
         </motion.h1>
       </header>
 
-      <motion.div 
+      <motion.div
         className="table-wrapper glass-card"
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -214,9 +214,9 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
               const jobTitle = job.isBlogger ? job.title : job.title.rendered;
               const jobDate = job.isBlogger ? job.deadline : (job.meta?._deadline_date || job.date);
               const circularUrl = job.view_circular || job.meta?.view_circular;
-              
+
               return (
-                <motion.tr 
+                <motion.tr
                   key={`${job.id}-${index}`}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -227,10 +227,10 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
                   <td className="date">{formatBengaliDate(jobDate)}</td>
                   <td className="action">
                     {circularUrl && (
-                      <a 
-                        href={circularUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        href={circularUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="table-details-btn"
                         onClick={(e) => e.stopPropagation()}
                       >
