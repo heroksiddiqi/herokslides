@@ -19,6 +19,13 @@ import { CSS } from '@dnd-kit/utilities';
 import { useDraggable, useDroppable, rectIntersection } from '@dnd-kit/core';
 import { Trash2, GripVertical, Download, Plus, Eye, EyeOff, Clock, RefreshCcw } from 'lucide-react';
 
+const getImagePath = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http') || path.startsWith('data:')) return path;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
+};
+
 // Draggable item for the Library (Right side)
 function LibraryItem({ slide, onAdd, usedCount, index }) {
   const isDynamic = slide.type === 'dynamic-job';
@@ -62,7 +69,7 @@ function LibraryItem({ slide, onAdd, usedCount, index }) {
           <div style={{ fontWeight: 'bold', color: '#38bdf8' }}>{slide.name}</div>
         </div>
       ) : (
-        <img src={slide.path} alt={slide.name} />
+        <img src={getImagePath(slide.path)} alt={slide.name} />
       )}
       {usedCount > 0 && (
         <div style={{
@@ -144,7 +151,7 @@ function SortableSlide({ id, slide, onRemove, onUpdate, zoomLevel }) {
           📋
         </div>
       ) : (
-        <img src={slide.path} style={thumbStyle} className="slide-item-thumb" alt="" />
+        <img src={getImagePath(slide.path)} style={thumbStyle} className="slide-item-thumb" alt="" />
       )}
       <div className="slide-item-info" style={{ fontSize: `${0.8 * zoomLevel}rem`, flex: 1, display: 'flex', flexDirection: 'column', gap: '2px' }}>
         <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -450,7 +457,7 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
                   📋 {activeSlide?.name}
                 </div>
               ) : (
-                <img src={activeSlide?.path} alt="" style={{ width: '100%', borderRadius: '8px' }} />
+                <img src={getImagePath(activeSlide?.path)} alt="" style={{ width: '100%', borderRadius: '8px' }} />
               )}
             </div>
           ) : (

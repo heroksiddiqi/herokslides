@@ -9,6 +9,13 @@ import './index.css';
 
 const JOB_FETCH_INTERVAL = 10; // Show a job slide every 10 images
 
+const getImagePath = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http') || path.startsWith('data:')) return path;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
+};
+
 function App() {
   const [slides, setSlides] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -391,7 +398,7 @@ function App() {
               exit={{ opacity: 0, scale: 1.08 }}
               transition={{ duration: 1.4, ease: "easeInOut" }}
             >
-              <img src={slides[currentIndex]?.path} alt={slides[currentIndex]?.name} />
+              <img src={getImagePath(slides[currentIndex]?.path)} alt={slides[currentIndex]?.name} />
             </motion.div>
           )
         )}
