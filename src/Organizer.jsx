@@ -20,10 +20,10 @@ import { useDraggable, useDroppable, rectIntersection } from '@dnd-kit/core';
 import { Trash2, GripVertical, Download, Plus, Eye, EyeOff, Clock, RefreshCcw } from 'lucide-react';
 
 // Draggable item for the Library (Right side)
-function LibraryItem({ slide, onAdd, usedCount }) {
+function LibraryItem({ slide, onAdd, usedCount, index }) {
   const isDynamic = slide.type === 'dynamic-job';
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
-    id: `library-${slide.id}`,
+    id: `library-${slide.id}-${index}`,
     data: slide
   });
 
@@ -112,8 +112,12 @@ function SortableSlide({ id, slide, onRemove, onUpdate, zoomLevel }) {
     setNodeRef,
     transform,
     transition,
-    isDragging
-  } = useSortable({ id });
+    isDragging,
+    isOver
+  } = useSortable({ 
+    id,
+    data: slide
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -129,7 +133,9 @@ function SortableSlide({ id, slide, onRemove, onUpdate, zoomLevel }) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} className="slide-item">
+    <div ref={setNodeRef} style={style} className={`slide-item-wrapper ${isOver && !isDragging ? 'is-over' : ''}`}>
+      {isOver && !isDragging && <div className="drop-indicator-line" />}
+      <div className="slide-item">
       <div {...attributes} {...listeners} style={{ cursor: 'grab' }}>
         <GripVertical size={16} color="#94a3b8" />
       </div>
@@ -173,12 +179,14 @@ function SortableSlide({ id, slide, onRemove, onUpdate, zoomLevel }) {
         </button>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onReset }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeId, setActiveId] = useState(null);
+  const [activeData, setActiveData] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1); // 1 to 3
   const [sidebarWidth, setSidebarWidth] = useState(350);
   const [isResizing, setIsResizing] = useState(false);
@@ -226,6 +234,7 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
 
   const handleDragStart = (event) => {
     setActiveId(event.active.id);
+    setActiveData(event.active.data.current);
   };
 
   const handleDragOver = (event) => {
@@ -283,6 +292,7 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
     }
 
     setActiveId(null);
+    setActiveData(null);
   };
 
   const addSlide = (slide, position = 'bottom') => {
@@ -336,14 +346,7 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
     };
   }, [resize, stopResizing]);
 
-  const activeSlide = useMemo(() => {
-    if (!activeId) return null;
-    const activeIdStr = activeId.toString();
-    if (activeIdStr.startsWith('library-')) {
-      return libraryWithDynamic.find(s => `library-${s.id}` === activeIdStr);
-    }
-    return currentSlides.find(s => s.tempId === activeId);
-  }, [activeId, libraryWithDynamic, currentSlides]);
+  const activeSlide = activeData;
 
   const { setNodeRef: setListDroppableRef } = useDroppable({
     id: 'playlist-droppable',
@@ -417,12 +420,13 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
             ))}
           </div>
           <div className="library-grid">
-            {filteredLibrary.map(slide => {
+            {filteredLibrary.map((slide, index) => {
               const usedCount = currentSlides.filter(s => s.id === slide.id).length;
               return (
                 <LibraryItem
-                  key={slide.id}
+                  key={`${slide.id}-${index}`}
                   slide={slide}
+                  index={index}
                   onAdd={addSlide}
                   usedCount={usedCount}
                 />
@@ -443,7 +447,7 @@ export default function Organizer({ allSlides, currentSlides, onUpdateOrder, onR
             }}>
               {activeSlide?.type === 'dynamic-job' ? (
                 <div style={{ padding: '20px', background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', borderRadius: '12px', border: '1px solid #3b82f6' }}>
-                  📋 {activeSlide.name}
+                  📋 {activeSlide?.name}
                 </div>
               ) : (
                 <img src={activeSlide?.path} alt="" style={{ width: '100%', borderRadius: '8px' }} />

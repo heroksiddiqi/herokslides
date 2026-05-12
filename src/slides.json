@@ -30,11 +30,11 @@
     "name": "2.webp"
   },
   {
-    "id": "dynamic-job-hot",
-    "name": "হট জবস",
+    "id": "dynamic-job-prebd",
+    "name": "বাছাইকৃত সার্কুলার",
     "type": "dynamic-job",
     "category": "Dynamic",
-    "subType": "hot"
+    "subType": "prebd"
   },
   {
     "id": "img-36",
@@ -67,11 +67,11 @@
     "name": "1.webp"
   },
   {
-    "id": "dynamic-job-deadline",
-    "name": "আগামীকালের ডেডলাইন",
+    "id": "table-job-prebd",
+    "name": "বাছাইকৃত সার্কুলার - টেবিল",
     "type": "dynamic-job",
     "category": "Dynamic",
-    "subType": "deadline"
+    "subType": "table-prebd"
   },
   {
     "id": "img-58",
@@ -104,11 +104,11 @@
     "name": "2.webp"
   },
   {
-    "id": "dynamic-job-latest",
-    "name": "লেটেস্ট জব ইনফো",
+    "id": "dynamic-job-faridpur",
+    "name": "ফরিদপুরের সরকারী চাকরী",
     "type": "dynamic-job",
     "category": "Dynamic",
-    "subType": "latest"
+    "subType": "faridpur"
   },
   {
     "id": "img-111",
@@ -141,17 +141,17 @@
     "name": "8.webp"
   },
   {
+    "id": "dynamic-job-govt",
+    "name": "সরকারী চাকরী",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "govt"
+  },
+  {
     "id": "img-25",
     "path": "/slides/004-online-gd/4.webp",
     "category": "004-online-gd",
     "name": "4.webp"
-  },
-  {
-    "id": "dynamic-job-faridpur",
-    "name": "ফরিদপুরের সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "faridpur"
   },
   {
     "id": "img-134",
@@ -172,17 +172,17 @@
     "name": "2.webp"
   },
   {
+    "id": "table-job-govt",
+    "name": "সরকারী চাকরী - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-govt"
+  },
+  {
     "id": "img-7",
     "path": "/slides/002-passport/1.webp",
     "category": "002-passport",
     "name": "1.webp"
-  },
-  {
-    "id": "dynamic-job-govt",
-    "name": "সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "govt"
   },
   {
     "id": "img-15",
@@ -209,17 +209,17 @@
     "name": "2.webp"
   },
   {
+    "id": "dynamic-job-deadline",
+    "name": "আগামীকালের ডেডলাইন",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "deadline"
+  },
+  {
     "id": "img-52",
     "path": "/slides/008-business-software/8.webp",
     "category": "008-business-software",
     "name": "8.webp"
-  },
-  {
-    "id": "dynamic-job-exams",
-    "name": "পরীক্ষার সময়সূচী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "exams"
   },
   {
     "id": "img-67",
@@ -246,6 +246,13 @@
     "name": "2.webp"
   },
   {
+    "id": "table-job-deadline",
+    "name": "আগামীকালের ডেডলাইন - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-deadline"
+  },
+  {
     "id": "img-79",
     "path": "/slides/011-question-typing/10.webp",
     "category": "011-question-typing",
@@ -256,13 +263,6 @@
     "path": "/slides/012-land/10.webp",
     "category": "012-land",
     "name": "10.webp"
-  },
-  {
-    "id": "dynamic-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "prebd"
   },
   {
     "id": "img-91",
@@ -283,6 +283,13 @@
     "name": "2.webp"
   },
   {
+    "id": "dynamic-job-deadline3",
+    "name": "আগামী ৩ দিনের ডেডলাইন",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "deadline3"
+  },
+  {
     "id": "img-114",
     "path": "/slides/016-training/2.webp",
     "category": "016-training",
@@ -301,13 +308,6 @@
     "name": "2.webp"
   },
   {
-    "id": "dynamic-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline3"
-  },
-  {
     "id": "img-128",
     "path": "/slides/019-driving-licence/3.webp",
     "category": "019-driving-licence",
@@ -318,6 +318,13 @@
     "path": "/slides/020-admission/2.webp",
     "category": "020-admission",
     "name": "2.webp"
+  },
+  {
+    "id": "table-job-deadline3",
+    "name": "আগামী ৩ দিনের ডেডলাইন - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-deadline3"
   },
   {
     "id": "img-136",
@@ -338,13 +345,6 @@
     "name": "4.webp"
   },
   {
-    "id": "dynamic-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "prebd"
-  },
-  {
     "id": "img-18",
     "path": "/slides/003-job-application/4.webp",
     "category": "003-job-application",
@@ -355,6 +355,13 @@
     "path": "/slides/003-job-application/6.webp",
     "category": "003-job-application",
     "name": "6.webp"
+  },
+  {
+    "id": "dynamic-job-exams",
+    "name": "পরীক্ষার সময়সূচী",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "exams"
   },
   {
     "id": "img-26",
@@ -387,11 +394,11 @@
     "name": "3.webp"
   },
   {
-    "id": "dynamic-job-exams",
-    "name": "পরীক্ষার সময়সূচী",
+    "id": "table-job-exams",
+    "name": "পরীক্ষার সময়সূচী - টেবিল",
     "type": "dynamic-job",
     "category": "Dynamic",
-    "subType": "exams"
+    "subType": "table-exams"
   },
   {
     "id": "img-46",
@@ -430,11 +437,11 @@
     "name": "2.webp"
   },
   {
-    "id": "dynamic-job-govt",
-    "name": "সরকারী চাকরী",
+    "id": "dynamic-job-hot",
+    "name": "হট জবস",
     "type": "dynamic-job",
     "category": "Dynamic",
-    "subType": "govt"
+    "subType": "hot"
   },
   {
     "id": "img-84",
@@ -467,17 +474,17 @@
     "name": "1.webp"
   },
   {
+    "id": "table-job-hot",
+    "name": "হট জবস - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-hot"
+  },
+  {
     "id": "img-105",
     "path": "/slides/014-tin/3.webp",
     "category": "014-tin",
     "name": "3.webp"
-  },
-  {
-    "id": "dynamic-job-faridpur",
-    "name": "ফরিদপুরের সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "faridpur"
   },
   {
     "id": "img-112",
@@ -510,17 +517,17 @@
     "name": "1.webp"
   },
   {
-    "id": "img-139",
-    "path": "/slides/021-misc/6.webp",
-    "category": "021-misc",
-    "name": "6.webp"
-  },
-  {
     "id": "dynamic-job-latest",
     "name": "লেটেস্ট জব ইনফো",
     "type": "dynamic-job",
     "category": "Dynamic",
     "subType": "latest"
+  },
+  {
+    "id": "img-139",
+    "path": "/slides/021-misc/6.webp",
+    "category": "021-misc",
+    "name": "6.webp"
   },
   {
     "id": "img-4",
@@ -547,6 +554,13 @@
     "name": "3.webp"
   },
   {
+    "id": "table-job-latest",
+    "name": "লেটেস্ট জব ইনফো - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-latest"
+  },
+  {
     "id": "img-11",
     "path": "/slides/002-passport/5.webp",
     "category": "002-passport",
@@ -565,13 +579,6 @@
     "name": "6.webp"
   },
   {
-    "id": "dynamic-job-deadline",
-    "name": "আগামীকালের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline"
-  },
-  {
     "id": "img-41",
     "path": "/slides/006-nid/6.webp",
     "category": "006-nid",
@@ -582,6 +589,13 @@
     "path": "/slides/007-facebook/1.webp",
     "category": "007-facebook",
     "name": "1.webp"
+  },
+  {
+    "id": "table-job-prebd",
+    "name": "বাছাইকৃত সার্কুলার - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-prebd"
   },
   {
     "id": "img-51",
@@ -614,6 +628,13 @@
     "name": "4.webp"
   },
   {
+    "id": "table-job-hot",
+    "name": "হট জবস - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-hot"
+  },
+  {
     "id": "img-83",
     "path": "/slides/012-land/4.webp",
     "category": "012-land",
@@ -644,17 +665,17 @@
     "name": "5.webp"
   },
   {
+    "id": "dynamic-job-latest",
+    "name": "লেটেস্ট জব ইনফো",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "latest"
+  },
+  {
     "id": "img-108",
     "path": "/slides/015-zero-return/1.webp",
     "category": "015-zero-return",
     "name": "1.webp"
-  },
-  {
-    "id": "dynamic-job-hot",
-    "name": "হট জবস",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "hot"
   },
   {
     "id": "img-119",
@@ -687,6 +708,13 @@
     "name": "1.webp"
   },
   {
+    "id": "dynamic-job-exams",
+    "name": "পরীক্ষার সময়সূচী",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "exams"
+  },
+  {
     "id": "img-135",
     "path": "/slides/020-admission/2.webp",
     "category": "020-admission",
@@ -705,13 +733,6 @@
     "name": "8.webp"
   },
   {
-    "id": "dynamic-job-faridpur",
-    "name": "ফরিদপুরের সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "faridpur"
-  },
-  {
     "id": "img-6",
     "path": "/slides/001-photo-print/6.webp",
     "category": "001-photo-print",
@@ -722,6 +743,13 @@
     "path": "/slides/002-passport/7.webp",
     "category": "002-passport",
     "name": "7.webp"
+  },
+  {
+    "id": "dynamic-job-hot",
+    "name": "হট জবস",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "hot"
   },
   {
     "id": "img-12",
@@ -754,17 +782,17 @@
     "name": "4.webp"
   },
   {
+    "id": "table-job-deadline",
+    "name": "আগামীকালের ডেডলাইন - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-deadline"
+  },
+  {
     "id": "img-16",
     "path": "/slides/003-job-application/2.webp",
     "category": "003-job-application",
     "name": "2.webp"
-  },
-  {
-    "id": "dynamic-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "prebd"
   },
   {
     "id": "img-38",
@@ -797,6 +825,13 @@
     "name": "6.webp"
   },
   {
+    "id": "table-job-latest",
+    "name": "লেটেস্ট জব ইনফো - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-latest"
+  },
+  {
     "id": "img-64",
     "path": "/slides/010-education-software/7.webp",
     "category": "010-education-software",
@@ -825,6 +860,13 @@
     "path": "/slides/012-land/7.webp",
     "category": "012-land",
     "name": "7.webp"
+  },
+  {
+    "id": "dynamic-job-deadline3",
+    "name": "আগামী ৩ দিনের ডেডলাইন",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "deadline3"
   },
   {
     "id": "img-102",
@@ -857,17 +899,17 @@
     "name": "4.webp"
   },
   {
+    "id": "table-job-exams",
+    "name": "পরীক্ষার সময়সূচী - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-exams"
+  },
+  {
     "id": "img-127",
     "path": "/slides/019-driving-licence/2.webp",
     "category": "019-driving-licence",
     "name": "2.webp"
-  },
-  {
-    "id": "dynamic-job-govt",
-    "name": "সরকারী চাকরী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "govt"
   },
   {
     "id": "img-14",
@@ -892,6 +934,13 @@
     "path": "/slides/007-facebook/3.webp",
     "category": "007-facebook",
     "name": "3.webp"
+  },
+  {
+    "id": "dynamic-job-faridpur",
+    "name": "ফরিদপুরের সরকারী চাকরী",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "faridpur"
   },
   {
     "id": "img-45",
@@ -924,6 +973,13 @@
     "name": "9.webp"
   },
   {
+    "id": "dynamic-job-deadline",
+    "name": "আগামীকালের ডেডলাইন",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "deadline"
+  },
+  {
     "id": "img-65",
     "path": "/slides/010-education-software/8.webp",
     "category": "010-education-software",
@@ -954,6 +1010,13 @@
     "name": "2.webp"
   },
   {
+    "id": "table-job-govt",
+    "name": "সরকারী চাকরী - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-govt"
+  },
+  {
     "id": "img-98",
     "path": "/slides/013-police-clearance/8.webp",
     "category": "013-police-clearance",
@@ -964,13 +1027,6 @@
     "path": "/slides/013-police-clearance/6.webp",
     "category": "013-police-clearance",
     "name": "6.webp"
-  },
-  {
-    "id": "dynamic-job-exams",
-    "name": "পরীক্ষার সময়সূচী",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "exams"
   },
   {
     "id": "img-106",
@@ -997,6 +1053,13 @@
     "name": "5.webp"
   },
   {
+    "id": "table-job-deadline3",
+    "name": "আগামী ৩ দিনের ডেডলাইন - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-deadline3"
+  },
+  {
     "id": "img-116",
     "path": "/slides/017-rail/2.webp",
     "category": "017-rail",
@@ -1021,17 +1084,17 @@
     "name": "5.webp"
   },
   {
-    "id": "dynamic-job-deadline",
-    "name": "আগামীকালের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline"
-  },
-  {
     "id": "img-35",
     "path": "/slides/005-cv/9.webp",
     "category": "005-cv",
     "name": "9.webp"
+  },
+  {
+    "id": "dynamic-job-govt",
+    "name": "সরকারী চাকরী",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "govt"
   },
   {
     "id": "img-39",
@@ -1058,17 +1121,17 @@
     "name": "6.webp"
   },
   {
-    "id": "dynamic-job-hot",
-    "name": "হট জবস",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "hot"
-  },
-  {
     "id": "img-82",
     "path": "/slides/012-land/3.webp",
     "category": "012-land",
     "name": "3.webp"
+  },
+  {
+    "id": "table-job-faridpur",
+    "name": "ফরিদপুরের সরকারী চাকরী - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-faridpur"
   },
   {
     "id": "img-99",
@@ -1101,11 +1164,11 @@
     "name": "4.webp"
   },
   {
-    "id": "dynamic-job-latest",
-    "name": "লেটেস্ট জব ইনফো",
+    "id": "dynamic-job-prebd",
+    "name": "বাছাইকৃত সার্কুলার",
     "type": "dynamic-job",
     "category": "Dynamic",
-    "subType": "latest"
+    "subType": "prebd"
   },
   {
     "id": "img-1",
@@ -1138,6 +1201,13 @@
     "name": "8.webp"
   },
   {
+    "id": "dynamic-job-hot",
+    "name": "হট জবস",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "hot"
+  },
+  {
     "id": "img-33",
     "path": "/slides/005-cv/7.webp",
     "category": "005-cv",
@@ -1168,6 +1238,13 @@
     "name": "7.webp"
   },
   {
+    "id": "table-job-prebd",
+    "name": "বাছাইকৃত সার্কুলার - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-prebd"
+  },
+  {
     "id": "img-63",
     "path": "/slides/010-education-software/6.webp",
     "category": "010-education-software",
@@ -1178,13 +1255,6 @@
     "path": "/slides/010-education-software/4.webp",
     "category": "010-education-software",
     "name": "4.webp"
-  },
-  {
-    "id": "dynamic-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "deadline3"
   },
   {
     "id": "img-92",
@@ -1209,6 +1279,13 @@
     "path": "/slides/015-zero-return/1.webp",
     "category": "015-zero-return",
     "name": "1.webp"
+  },
+  {
+    "id": "dynamic-job-deadline3",
+    "name": "আগামী ৩ দিনের ডেডলাইন",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "deadline3"
   },
   {
     "id": "img-117",
@@ -1241,11 +1318,11 @@
     "name": "6.webp"
   },
   {
-    "id": "dynamic-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন",
+    "id": "dynamic-job-latest",
+    "name": "লেটেস্ট জব ইনফো",
     "type": "dynamic-job",
     "category": "Dynamic",
-    "subType": "deadline3"
+    "subType": "latest"
   },
   {
     "id": "img-77",
@@ -1266,6 +1343,13 @@
     "name": "4.webp"
   },
   {
+    "id": "table-job-deadline",
+    "name": "আগামীকালের ডেডলাইন - টেবিল",
+    "type": "dynamic-job",
+    "category": "Dynamic",
+    "subType": "table-deadline"
+  },
+  {
     "id": "img-118",
     "path": "/slides/017-rail/4.webp",
     "category": "017-rail",
@@ -1276,67 +1360,5 @@
     "path": "/slides/002-passport/2.webp",
     "category": "002-passport",
     "name": "2.webp"
-  },
-  {
-    "id": "img-7",
-    "path": "/slides/002-passport/1.webp",
-    "category": "002-passport",
-    "name": "1.webp"
-  },
-  {
-    "id": "table-job-prebd",
-    "name": "বাছাইকৃত সার্কুলার - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-prebd"
-  },
-  {
-    "id": "table-job-faridpur",
-    "name": "ফরিদপুরের সরকারী চাকরী - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-faridpur"
-  },
-  {
-    "id": "table-job-govt",
-    "name": "সরকারী চাকরী - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-govt"
-  },
-  {
-    "id": "table-job-exams",
-    "name": "পরীক্ষার সময়সূচী - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-exams"
-  },
-  {
-    "id": "table-job-deadline",
-    "name": "আগামীকালের ডেডলাইন - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-deadline"
-  },
-  {
-    "id": "table-job-deadline3",
-    "name": "আগামী ৩ দিনের ডেডলাইন - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-deadline3"
-  },
-  {
-    "id": "table-job-hot",
-    "name": "হট জবস - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-hot"
-  },
-  {
-    "id": "table-job-latest",
-    "name": "লেটেস্ট জব ইনফো - টেবিল",
-    "type": "dynamic-job",
-    "category": "Dynamic",
-    "subType": "table-latest"
   }
 ]

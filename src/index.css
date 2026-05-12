@@ -546,6 +546,35 @@ body {
   text-overflow: ellipsis;
 }
 
+.slide-item-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.slide-item-wrapper.is-over {
+  /* Optional: highlight the target item */
+}
+
+.drop-indicator-line {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #3b82f6;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  z-index: 100;
+  pointer-events: none;
+  animation: pulse-blue 1.5s infinite;
+}
+
+@keyframes pulse-blue {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
 .slide-item {
   display: flex;
   align-items: center;
