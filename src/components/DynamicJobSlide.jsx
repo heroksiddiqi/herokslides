@@ -29,25 +29,25 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
   // JSONP Callback handler
   const handleJobData = useCallback((data) => {
     const entries = data.feed.entry || [];
-      const processedJobs = entries.map(entry => {
-        const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+    const processedJobs = entries.map(entry => {
+      const content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
 
-        // Extract deadline if present in content (e.g., Deadline: 24 May 2026)
-        const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
-        const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
+      // Extract deadline if present in content (e.g., Deadline: 24 May 2026)
+      const deadlineMatch = content.match(/Deadline:\s*([^<]+)/i);
+      const deadline = deadlineMatch ? deadlineMatch[1].trim() : null;
 
-        // Extract the post link (alternate link)
-        const postLink = entry.link?.find(l => l.rel === 'alternate')?.href;
+      // Extract the post link (alternate link)
+      const postLink = entry.link?.find(l => l.rel === 'alternate')?.href;
 
-        return {
-          id: entry.id.$t,
-          title: entry.title.$t, // Blogger structure
-          published: entry.published.$t,
-          deadline: deadline,
-          view_circular: postLink,
-          isBlogger: true
-        };
-      }).filter(job => job.title.trim() !== 'চাকরির খবর');
+      return {
+        id: entry.id.$t,
+        title: entry.title.$t, // Blogger structure
+        published: entry.published.$t,
+        deadline: deadline,
+        view_circular: postLink,
+        isBlogger: true
+      };
+    }).filter(job => job.title.trim() !== 'চাকরির খবর');
     setInternalJobs(processedJobs);
     setLoading(false);
   }, []);
@@ -145,7 +145,7 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
     <div className="dynamic-job-container dark-theme">
       <AnimatePresence>
         {isPaused && (
-          <motion.div 
+          <motion.div
             className="pause-indicator"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -207,10 +207,10 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10 }
                   </div>
                   {circularUrl && (
                     <div className="footer-right">
-                      <a 
-                        href={circularUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        href={circularUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="details-link"
                         onClick={(e) => e.stopPropagation()}
                       >

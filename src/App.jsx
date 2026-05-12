@@ -124,8 +124,8 @@ function App() {
         else return acc;
       }, []);
 
-      console.log("Fetched Jobs:", { 
-        prebd: prebdData?.length, 
+      console.log("Fetched Jobs:", {
+        prebd: prebdData?.length,
         faridpur: faridpurData?.length,
         govt: govtData?.length,
         exams: examsData?.length,
@@ -151,15 +151,15 @@ function App() {
     setCurrentIndex((prev) => {
       let nextIdx = prev;
       const totalSlides = slides.length;
-      
+
       if (totalSlides === 0) return 0;
 
       // Find the next non-hidden slide
       for (let i = 1; i <= totalSlides; i++) {
-        const potentialIdx = settings.isRandom 
+        const potentialIdx = settings.isRandom
           ? Math.floor(Math.random() * totalSlides)
           : (prev + i) % totalSlides;
-          
+
         if (!slides[potentialIdx]?.hidden) {
           nextIdx = potentialIdx;
           break;
@@ -173,7 +173,7 @@ function App() {
     setCurrentIndex((prev) => {
       const totalSlides = slides.length;
       if (totalSlides === 0) return 0;
-      
+
       let prevIdx = prev;
       for (let i = 1; i <= totalSlides; i++) {
         const potentialIdx = (prev - i + totalSlides) % totalSlides;
@@ -190,11 +190,11 @@ function App() {
   useEffect(() => {
     if (isPlaying && slides.length > 0) {
       const currentSlide = slides[currentIndex];
-      
+
       // 1. Individual slide duration override
       // 2. Default to dynamic or static global duration
       let currentDuration = currentSlide?.duration;
-      
+
       if (!currentDuration) {
         const isJob = currentSlide?.type === 'dynamic-job';
         currentDuration = isJob ? settings.dynamicDuration : settings.duration;
@@ -337,15 +337,15 @@ function App() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {slides[currentIndex]?.type === 'dynamic-job' ? (
           <motion.div
             key={`dynamic-${currentIndex}-${slides[currentIndex]?.id}`}
             className="slide"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.08 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
           >
             {slides[currentIndex]?.subType?.startsWith('table-') ? (
               <TableJobSlide
@@ -356,7 +356,7 @@ function App() {
                         slides[currentIndex]?.subType === 'table-deadline' ? jobs.deadline :
                           slides[currentIndex]?.subType === 'table-deadline3' ? jobs.deadline3 :
                             (slides[currentIndex]?.subType === 'table-hot' || slides[currentIndex]?.subType === 'table-latest') ? [] :
-                            jobs.prebd
+                              jobs.prebd
                 }
                 subType={slides[currentIndex]?.subType}
                 title={slides[currentIndex]?.name}
@@ -386,10 +386,10 @@ function App() {
             <motion.div
               key={slides[currentIndex]?.id}
               className="slide"
-              initial={{ opacity: 0, scale: 1.1 }}
+              initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 1 }}
+              exit={{ opacity: 0, scale: 1.08 }}
+              transition={{ duration: 1.4, ease: "easeInOut" }}
             >
               <img src={slides[currentIndex]?.path} alt={slides[currentIndex]?.name} />
             </motion.div>
@@ -399,14 +399,14 @@ function App() {
 
       {/* Progress Bar */}
       {isPlaying && (
-        <motion.div 
+        <motion.div
           className="progress-bar"
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           key={`progress-${currentIndex}`}
-          transition={{ 
-            duration: slides[currentIndex]?.duration || (slides[currentIndex]?.type === 'dynamic-job' ? settings.dynamicDuration : settings.duration), 
-            ease: "linear" 
+          transition={{
+            duration: slides[currentIndex]?.duration || (slides[currentIndex]?.type === 'dynamic-job' ? settings.dynamicDuration : settings.duration),
+            ease: "linear"
           }}
         />
       )}
