@@ -164,6 +164,10 @@ function App() {
     const filterList = (list) => {
       if (!list || !Array.isArray(list)) return [];
       return list.filter(item => {
+        // Block specific categories for Prebd (Bank=15, NGO=14)
+        const categories = item.categories || [];
+        if (categories.includes(14) || categories.includes(15)) return false;
+
         const title = decodeHTML(item.title?.rendered || item.title || '').toLowerCase();
         const content = decodeHTML(item.content?.rendered || item.content || '').toLowerCase();
         const excerpt = decodeHTML(item.excerpt?.rendered || '').toLowerCase();

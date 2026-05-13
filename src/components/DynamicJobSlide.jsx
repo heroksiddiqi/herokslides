@@ -42,6 +42,10 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10, 
     };
 
     return sourceJobs.filter(job => {
+      // Block specific categories for Prebd (Bank=15, NGO=14)
+      const categories = job.categories || [];
+      if (categories.includes(14) || categories.includes(15)) return false;
+
       const jobTitle = decodeHTML(job.isBlogger ? job.title : (job.title?.rendered || job.title || '')).toLowerCase();
       const jobContent = decodeHTML(job.isBlogger ? job.content : (job.content?.rendered || job.content || '')).toLowerCase();
       
@@ -68,7 +72,8 @@ const DynamicJobSlide = ({ allJobs = [], title, subType, internalInterval = 10, 
         published: entry.published.$t,
         deadline: deadline,
         view_circular: postLink,
-        isBlogger: true
+        isBlogger: true,
+        categories: entry.category?.map(cat => cat.term) || []
       };
     }).filter(job => job.title.trim() !== 'চাকরির খবর');
     
