@@ -50,6 +50,11 @@ const TableJobSlide = ({ allJobs = [], title, subType, isLoading: externalLoadin
       const categories = job.categories || [];
       if (categories.includes(14) || categories.includes(15)) return false;
 
+      // Block specific labels for Blogger (case-insensitive)
+      if (job.isBlogger && categories.some(cat => 
+        typeof cat === 'string' && (cat.toLowerCase() === 'ngo' || cat.toLowerCase() === 'bank')
+      )) return false;
+
       const jobTitle = decodeHTML(job.isBlogger ? job.title : (job.title?.rendered || job.title || '')).toLowerCase();
       const jobContent = decodeHTML(job.isBlogger ? job.content : (job.content?.rendered || job.content || '')).toLowerCase();
       

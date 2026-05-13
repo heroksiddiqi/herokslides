@@ -168,6 +168,11 @@ function App() {
         const categories = item.categories || [];
         if (categories.includes(14) || categories.includes(15)) return false;
 
+        // Block specific labels for Blogger (case-insensitive)
+        if (item.isBlogger && categories.some(cat => 
+          typeof cat === 'string' && (cat.toLowerCase() === 'ngo' || cat.toLowerCase() === 'bank')
+        )) return false;
+
         const title = decodeHTML(item.title?.rendered || item.title || '').toLowerCase();
         const content = decodeHTML(item.content?.rendered || item.content || '').toLowerCase();
         const excerpt = decodeHTML(item.excerpt?.rendered || '').toLowerCase();
